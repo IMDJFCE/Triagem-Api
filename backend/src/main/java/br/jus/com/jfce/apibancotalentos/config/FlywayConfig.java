@@ -1,0 +1,21 @@
+package br.jus.com.jfce.apibancotalentos.config;
+
+import org.flywaydb.core.Flyway;
+import org.springframework.boot.autoconfigure.flyway.FlywayMigrationStrategy;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class FlywayConfig {
+
+    @Bean
+    public FlywayMigrationStrategy repairStrategy() {
+        return flyway -> {
+            Flyway.configure()
+                    .dataSource(flyway.getConfiguration().getDataSource())
+                    .load()
+                    .repair();
+            flyway.migrate();
+        };
+    }
+}

@@ -1,0 +1,2 @@
+ALTER TABLE oportunidade
+    ALTER COLUMN descricao TYPE VARCHAR(7000);
