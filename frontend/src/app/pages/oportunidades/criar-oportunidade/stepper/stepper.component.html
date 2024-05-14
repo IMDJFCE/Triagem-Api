@@ -1,0 +1,93 @@
+<main>
+    <mat-stepper [linear]="isLinear" #stepper class="stepper-box">
+        <mat-step [stepControl]="firstFormGroup" errorMessage="Campos obrigatórios">
+            <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel>Início</ng-template>
+                    <div>
+                        <p class="texto">Vamos começar! Primeiro escolha o nome para oportunidade que deseja cadastrar.</p>
+                    </div>
+                    <div class="row">
+                        <div class="label-box">
+                            <mat-label class="font">Nome da oportunidade</mat-label>
+                        </div>
+                        <mat-form-field class="col campo">
+                            <input matInput placeholder="Digite o nome da oportunidade" formControlName="firstCtrl" required>
+                        </mat-form-field>
+                    </div>
+                    <div class="data-box">
+                        <div class="label-box">
+                            <mat-label class="font">Data de início </mat-label>
+                        </div>
+                        <mat-form-field class="data">
+                            <input matInput [matDatepicker]="picker1" formControlName="startDateControl"
+                                placeholder="DD/MM/AAAA">
+                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                            <mat-datepicker #picker1></mat-datepicker>
+                        </mat-form-field>
+                        <div class="label-box">
+                            <mat-label class="font">Data de fim </mat-label>
+                        </div>
+                        <mat-form-field class="data">
+                            <input matInput [matDatepicker]="picker2" formControlName="endDateControl"
+                                placeholder="DD/MM/AAAA">
+                            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                            <mat-datepicker #picker2></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="row">
+                        <div class="label-box">
+                                <mat-label class="font">Descrição </mat-label>
+                        </div>
+                            <mat-form-field class="descricao-box">
+                                <textarea matInput formControlName="textControl" placeholder="Digite seu texto" rows="3" required></textarea>
+                            </mat-form-field>
+                    </div>
+
+                    <div class="row">
+                        <div class="label-box">
+                            <mat-label class="font">E-mail </mat-label>
+                        </div>
+                            <mat-form-field class="campo">
+                                <mat-label class="font">E-mail disponível para dúvidas</mat-label>
+                                <input matInput placeholder="Digite seu E-mail" formControlName="emailControl" required>
+                            </mat-form-field>
+                    </div>
+
+                <div class="iniciar-btn-box">
+                    <button matStepperNext class="btn azul-btn">Iniciar</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" errorMessage="Habilidade Requerida.">
+          <div>
+            <p class="texto">Faça o cadastro das suas habilidades técnicas, ou seja, as habilidades adquiridas por meio de formação tradicional.</p>
+          </div>
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Habilidades Técnicas</ng-template>
+            <div class="row">
+              <app-chips-technical-skill></app-chips-technical-skill>
+            </div>
+          </form>
+          <div class="btn-box">
+            <button matStepperPrevious class="btn azul-btn">Voltar</button>
+            <button matStepperNext class="btn azul-btn">Avançar</button>
+        </div>
+        </mat-step>
+        <mat-step [stepControl]="thirdFormGroup" errorMessage="Habilidade Requerida.">
+          <div>
+            <p class="texto">Faça o cadastro das suas habilidades comportamentais, ou seja, competências pessoais.</p>
+          </div>
+          <form [formGroup]="thirdFormGroup">
+            <ng-template matStepLabel>Habilidades Comportamentais</ng-template>
+            <div class="row">
+              <app-chips-behavorial-skill></app-chips-behavorial-skill>
+            </div>
+          </form>
+          <div class="btn-box">
+            <button matStepperPrevious class="btn azul-btn">Voltar</button>
+            <button (click)="finalizar()" class="btn azul-btn">Finalizar</button>
+        </div>
+        </mat-step>
+    </mat-stepper>
+</main>

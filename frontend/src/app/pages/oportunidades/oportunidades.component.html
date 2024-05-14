@@ -1,0 +1,38 @@
+<app-header></app-header>
+
+<app-menu> </app-menu>
+
+<main>
+
+    <div class="oportunidades-container">
+        <div class="oportunidades-box">
+            <h2 class="oportunidades-title">Oportunidades abertas</h2>
+            <div class="oportunidades-lista">
+                <div *ngFor="let oportunidade of oportunidades" class="oportunidade-card">
+                    <a [routerLink]="['/pages/detalhes-oportunidade', oportunidade.id]" class="link-detalhes">
+                        <h3 class="titulo-vaga">{{ oportunidade.titulo }}</h3>
+                        <p class="texto-vaga">Inscrições até {{ oportunidade.dataFinal }}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="oportunidades-box">
+            <h2 class="oportunidades-title title-red">Oportunidades encerradas</h2>
+        
+            <div class="oportunidades-lista encerradas">
+                <div *ngFor="let oportunidade of oportunidades" class="oportunidade-card">
+                    <a [routerLink]="['/pages/detalhes-oportunidade', oportunidade.id]" class="link-detalhes">
+                        <h3 class="titulo-vaga">{{ oportunidade.titulo }}</h3>
+                        <p class="texto-vaga">Inscrições até {{ oportunidade.dataFinal }}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="button-box" *ngIf="temPermissao">
+        <a class="cadastrar" routerLink="/pages/criarOportunidade">Criar Oportunidade</a>
+    </div>
+</main>
+
+<app-footer></app-footer>

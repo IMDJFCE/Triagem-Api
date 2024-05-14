@@ -1,0 +1,45 @@
+p{
+  text-align: center;
+  padding: 0.5rem;
+}
+mat-step{
+  margin: 0.5rem;
+  background-color: #fff;
+}
+
+mat-form-field{
+  width: 50vw;
+  background-color: #fff;
+}
+
+.btn{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  padding: 1rem;
+}
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+button{
+  margin: 1.25rem;
+  width: 7rem;
+  height: 3rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #002F6C;
+  color: #fff;
+  transition: all 0.5s ease;
+}
+
+button:hover{
+  background-color: rgba(0,122,51,1);
+  color: #fff;
+}
+
+.row mat-form-field + mat-form-field {
+  display: flex;
+}
+

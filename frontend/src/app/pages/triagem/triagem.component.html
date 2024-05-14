@@ -1,0 +1,73 @@
+<app-header></app-header>
+
+<app-menu></app-menu>
+
+    <main>
+        <div class="lista-candidatos">
+            <h3> Lista de candidatos(as) aprovado(s) na triagem cega. Antes de enviar os convites, lembre-se que pode utilizar filtros que considerem as questões de diversidade e inclusão, dando especial atenção às minorias (gênero, étnico raciais e deficientes) ao selecionar os candidatos para os convites.  </h3>
+        </div>
+        <div class="filter-selection">
+            <mat-form-field>
+                <mat-label>Selecione</mat-label>
+                <mat-select [formControl]= "toppings" multiple>
+                    <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>             
+        <div class ="lista-candidatos-container">
+            <div class="paginator">
+                <mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page">
+                </mat-paginator>
+            </div>
+            <div class="container mt-5">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                            <input 
+                                class="form-check-input"
+                                type="checkbox" 
+                                [(ngModel)]="parentSelector"
+                                [value]="-1"
+                                (change)="onChangeCandidato($event)"
+                                />  
+                            </th>
+                            <th scope="col"> Nome </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <div *ngIf="existeUsuarios">
+                            <tr *ngFor="let usuario of usuariosTriados">
+                                <th scope="row">
+                                    <input 
+                                    class="form-check-input"
+                                    type="checkbox" 
+                                    [value]="usuario.id"
+                                    [checked]="usuario.nome"
+                                    (change)="onChangeCandidato($event)"
+                                    />
+                                </th>
+                                <td>{{usuario.nome}}</td>
+                            </tr>
+                        </div>
+
+                        <div *ngIf="!existeUsuarios">
+                            <p>Não existe usuário triado com essas habilidades nesse momento.</p>
+                        </div>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="button-container">
+            <div class="button-box">
+                <a class="voltar" routerLink="/pages/perfil">Voltar</a>
+            </div>
+            <div class="button-box">
+                <a class="next-step" routerLink="">Próxima etapa </a>
+            </div>
+        </div>
+    </main>
+<app-footer></app-footer> 

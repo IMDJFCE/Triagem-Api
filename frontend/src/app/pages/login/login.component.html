@@ -1,0 +1,23 @@
+<body class="container">
+  <img src="assets/logo.svg" alt="Logo" class="logo">
+  <h1 class="text">Plataforma de Gestão de Oportunidades e Talentos da 5ª Região</h1>
+  <div class="form-center">
+    <form [formGroup]="form">
+      <h3 class="text">Informe suas credenciais para iniciar a sessão.</h3>
+      <mat-form-field appearance="outline">
+        <mat-label>E-mail</mat-label>
+        <input matInput type="email" formControlName="email">
+        <mat-icon matSuffix>mail</mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Senha</mat-label>
+        <input matInput type="password" formControlName="password">
+        <mat-icon matSuffix>lock</mat-icon>
+      </mat-form-field>
+      <button type="submit" class="button" (click)="submit()">Entrar</button>
+      <a href="#">Esqueci a senha</a>
+      <a href="/cadastro">Registrar nova conta</a>
+    </form>
+  </div>
+</body>
+

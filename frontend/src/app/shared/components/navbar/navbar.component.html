@@ -1,0 +1,37 @@
+<mat-toolbar class="navbar">
+  <a routerLink="/pages/home" class="nav-link">
+    <mat-icon>home</mat-icon>
+    <span>Home</span>
+  </a>
+  <a routerLink="/pages/perfil" class="nav-link">
+    <mat-icon>person</mat-icon>
+    <span>Perfil</span>
+  </a>
+  <a routerLink="/pages/oportunidades" class="nav-link">
+    <mat-icon>work</mat-icon>
+    <span>Oportunidades</span>
+  </a>
+  <a href="" class="nav-link">
+    <mat-icon>gavel</mat-icon>
+    <span>Legislação</span>
+  </a>
+  <a href="" class="nav-link" label="Configurações">
+    <mat-icon>settings</mat-icon>
+    <span>Configurações</span>
+  </a>
+  <a href="" class="nav-link" (click)="toggleDarkMode()">
+    <mat-icon>dark_mode</mat-icon>
+    <mat-switch (change)="toggleDarkMode()">Dark Mode</mat-switch>
+  </a>
+  <a href="" class="nav-link" label="Logout">
+    <mat-icon>logout</mat-icon>
+    <span>Logout</span>
+  </a>
+  <div class="mat-profile">
+    <img src="https://picsum.photos/200/200" class="mat-avatar" alt="Foto do usuário">
+    <span class="mat-menu-title">Allan</span>
+    <span class="mat-menu-subtitle">allan@jfce.jus.br</span>
+  </div>
+</mat-toolbar>
+
+

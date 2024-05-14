@@ -1,0 +1,192 @@
+main{
+    width: 90%;
+    margin: .3rem auto;
+}
+
+.stepper-box{
+    width: 100%;
+}
+
+form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 1rem;
+    margin: 0 auto 1rem auto;
+}
+
+
+.habilidades{
+    margin: 3rem auto;
+}
+
+.font{
+    font-size: .8rem;
+}
+
+.campo{
+    width: 100%;
+}
+
+.label-box{
+    display: flex;
+    align-items: center;
+    margin-bottom: .8rem;
+}
+
+.data-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.data{
+    width: 100%;
+    padding: .5rem 1rem;
+}
+
+.descricao-box{
+    width: 100%;
+}
+
+.texto{
+    display: flex;
+    justify-content: center;
+    text-align: justify;
+    text-indent: 1rem;
+    padding-bottom: .5rem;
+    font-size: .8rem;
+}
+
+.habilidades-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.habilidade-form{
+    width: 100%;
+}
+
+.iniciar-btn-box{
+    display: flex;
+    justify-content: center;
+}
+
+.btn-box{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1rem;
+}
+
+.btn{
+    margin: 1rem;
+    padding: .5rem;
+    width: 4rem;
+    height: 2rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    border-radius: 5px;
+    border: none;
+  }
+
+.azul-btn{
+    background-color: rgba(0,47,108,1);
+    color: white;
+    transition: all 0.5s ease;
+}
+
+.azul-btn:hover{
+    background-color: rgba(0,122,51,1);
+}
+
+@media only screen and (min-width: 600px) and (max-width: 991px){
+    .habilidades{
+        margin: 5rem auto;
+    }
+
+    .font{
+        font-size: .9rem;
+    }
+
+    .data-box{
+        flex-direction: row;
+    }
+
+    .data{
+        width: 40%;
+    }
+
+    .texto{
+        font-size: 1rem;
+    }
+
+    .btn{
+        width: 5rem;
+        height: 2.5rem;
+        font-size: .9rem;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px){
+    .habilidades{
+        margin: 5rem auto;
+    }
+
+    .font{
+        font-size: 1rem;
+    }
+
+    .data-box{
+        flex-direction: row;
+    }
+
+    .data{
+        width: 40%;
+    }
+
+    .texto{
+        font-size: 1rem;
+    }
+
+    .btn{
+        width: 5.5rem;
+        height: 2.8rem;
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (min-width: 1200px){
+    main{
+        width: 1100px;
+    }
+
+    .habilidades{
+        margin: 5rem auto;
+    }
+
+    .font{
+        font-size: 1rem;
+    }
+
+    .data-box{
+        flex-direction: row;
+    }
+
+    .data{
+        width: 40%;
+    }
+
+    .texto{
+        width: 70%;
+        margin: .5rem auto;
+        font-size: 1rem;
+    }
+
+    .btn{
+        width: 6rem;
+        height: 3rem;
+        font-size: 1rem;
+    }
+}

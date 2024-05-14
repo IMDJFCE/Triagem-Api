@@ -1,0 +1,66 @@
+header{
+    background: radial-gradient(circle, rgba(0,47,108,1) 0%, rgba(0,122,51,1) 100%);
+}
+
+.container{
+    color: #FFFFFF;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.title{
+    margin-top: .5rem;
+    margin-left: .5rem;
+    padding: .4rem;
+    font-size: .9rem;
+    font-weight: 500;
+    text-align:start;
+}
+
+.img{
+    width: 100%;
+    max-height: 6rem;
+}
+
+@media only screen and (min-width: 600px) and (max-width: 991px){
+    .title{
+        font-size: 1.3rem;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px){
+    .title{
+        font-size: 1.5rem;
+    }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1920px){
+    .container{
+        justify-content: space-around;
+    }
+
+    .title{
+        font-size: 1.8rem;
+    }
+
+    .img{
+        max-height: 7rem;
+    }
+}
+
+@media only screen and (min-width: 1921px){
+    .container{
+        justify-content: space-around;
+        width: 1900px;
+    }
+
+    .title{
+        font-size: 2rem;
+    }
+
+    .img{
+        max-height: 7rem;
+    }
+}

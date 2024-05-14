@@ -1,0 +1,17 @@
+<mat-form-field class="bevavorial-chip-list">
+  <mat-label>Habilidades Comportamentais</mat-label>
+  <mat-chip-grid #chipGrid aria-label="Insira as Habilidades">
+    <ng-container *ngFor="let skill of skills; let i = index">
+      <mat-chip-row (removed)="remove(skill)" [editable]="true" (edited)="edit(skill, $event)"
+        [aria-description]="'press enter to edit ' + skill.nome">
+        {{skill.nome}}
+        <button matChipRemove [attr.aria-label]="'remove ' + skill.nome">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip-row>
+    </ng-container>
+    <input placeholder="Nova Habilidade..." [matChipInputFor]="chipGrid"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+      (matChipInputTokenEnd)="add($event)" />
+  </mat-chip-grid>
+</mat-form-field>

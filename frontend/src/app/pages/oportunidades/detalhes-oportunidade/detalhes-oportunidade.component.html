@@ -1,0 +1,46 @@
+<app-header></app-header>
+
+<app-menu></app-menu>
+
+<main>
+    <h2 class="oportunidades-title">{{oportunidade?.titulo}} </h2>
+
+    <div class="oportunidade-descricao-box">
+        <p class="info"> {{oportunidade?.descricao}}</p>
+        <p class="info">Data de Início: {{ oportunidade?.dataInicial }}</p>
+        <p class="info">Data de Fim: {{ oportunidade?.dataFinal }}</p>
+        <p class="info">Email: {{ oportunidade?.email }}</p>
+    </div>
+
+    <div class="habilidades-container">
+        <div class="habilidadetecnica-box">
+            <div>
+                <h3 class="habilidade-tipo"> Habilidades técnica </h3>
+            </div>
+            <div class="nome-habilidade-box">
+                <p class="nome-habilidade" *ngFor="let habilidade of habilidadesTecnicas">{{ habilidade.nome }}</p>
+            </div>
+        </div>
+
+        <div class="habilidadecomportamental-box">
+            <div >
+                <h3 class="habilidade-tipo"> Habilidades comportamental </h3>
+            </div>
+            <div class="nome-habilidade-box">
+                <p class="nome-habilidade" *ngFor="let habilidade of habilidadesComportamentais">{{ habilidade.nome }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <div class="button-box">
+            <a class="voltar" routerLink="/pages/oportunidades">Voltar</a>
+        </div>
+        <div class="button-box" *ngIf="temPermissao">
+            <a class="executartriagem" [routerLink]="['/pages/detalhes-oportunidade', oportunidadeId, 'triagem']">Executar triagem </a>
+        </div>
+    </div>
+
+</main>
+
+<app-footer></app-footer>

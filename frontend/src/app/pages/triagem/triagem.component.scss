@@ -1,0 +1,70 @@
+main{
+    width: 80%;
+    margin: 3rem auto;
+}
+
+.lista-candidatos {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.lista-candidatos-container{
+    border: 1px solid #2a4670;
+    width: 60%;
+    height: 400px;
+    padding: .8rem;
+    border-radius: .4rem;
+    margin: 1rem auto;
+} 
+
+.form-check-input {
+    display: flex;
+    padding: .2rem;
+    margin: 1rem;
+}
+
+
+.button-container{
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.button-box{
+    margin-bottom: 2rem;
+}
+
+.voltar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 40px;
+    margin: 1rem;
+    padding: 1.3rem 1rem;
+    background-color: #a2a4a5;
+    color: white;
+    border-radius: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: .8rem;
+}
+
+.next-step{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 1px;
+    margin: 1rem;
+    padding: 1.3rem 1rem;
+    background-color:  #002F6C;
+    color: white;
+    border-radius: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: .8rem;
+}

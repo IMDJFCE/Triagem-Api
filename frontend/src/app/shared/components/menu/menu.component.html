@@ -1,0 +1,23 @@
+
+<mat-toolbar>
+    <div class= "container">
+        <a routerLink="/pages/home" routerLinkActive="active">
+            <span>Home</span>
+          </a>
+          <a routerLink="/pages/perfil" routerLinkActive="active">
+            <span>Perfil</span>
+          </a>
+          <a routerLink="/pages/oportunidades" routerLinkActive="active" [class.active]="isOportunidadesActive()">
+            <span>Oportunidades</span>
+          </a>
+          <a href="" routerLinkActive="active">
+            <span>Configurações</span>
+          </a>
+        <div>
+        <button mat-icon-button (click)="logout()">
+            <mat-icon>logout</mat-icon>
+          </button>
+        </div>
+    </div>
+</mat-toolbar>
+  
