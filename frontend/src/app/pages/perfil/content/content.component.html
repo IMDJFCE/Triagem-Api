@@ -29,6 +29,32 @@
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Informações do currículo</ng-template>
     </form>
+    <div class="row">
+      <div class="label-box">
+              <mat-label class="font">Currículo Lattes</mat-label>
+      </div>
+          <mat-form-field class="descricao-box">
+              <textarea matInput formControlName="textControl" placeholder="Digite seu texto" rows="1" required></textarea>
+          </mat-form-field>
+    </div>
+    <div class="row">
+      <div class="label-box">
+              <mat-label class="font">Linkedin</mat-label>
+      </div>
+          <mat-form-field class="descricao-box">
+              <textarea matInput formControlName="textControl" placeholder="Digite seu texto" rows="1" required></textarea>
+          </mat-form-field>
+    </div>
+    <div class="row">
+      <div class="label-box">
+              <mat-label class="font">Currículo externo</mat-label>
+      </div>
+          <mat-form-field class="descricao-box">
+              <textarea matInput formControlName="textControl" placeholder="Digite seu texto" rows="1" required></textarea>
+          </mat-form-field>
+    </div>
+    <p>Para adicionar mais informações como experiência profissional e formação acadêmica, adicione no campo acima o endereço web em que seu currículo está armazenado.</p>
+    <p>Exemplos de servidores de hospedagem: Google Drive, DropBox, OneDrive, iCloud e etc.</p>
     <div class="btn">
       <button button matStepperPrevious>Voltar</button>
       <button button matStepperNext>Avançar</button>
