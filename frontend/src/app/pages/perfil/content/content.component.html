@@ -8,11 +8,10 @@
       <button class="button" button matStepperNext>Iniciar</button>
     </div>
   </mat-step>
-  <mat-step [stepControl]="firstFormGroup" errorMessage="Hábilidade Requerida.">
+  <mat-step [stepControl]="firstFormGroup" errorMessage="Informação Requerida.">
     <form [formGroup]="firstFormGroup">
       <div class="text">
-        <p>Faça o cadastro das suas habilidades técnicas, ou seja, as habilidades adquiridas por meio de formação
-          tradicional.</p>
+        <p>Faça o cadastro das suas habilidades técnicas e comportamentais.</p>
       </div>
       <ng-template matStepLabel>Habilidades</ng-template>
       <div class="row">
@@ -22,14 +21,10 @@
         <button button matStepperNext>Avançar</button>
       </div>
     </form>
-
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup" errorMessage="Habilidade Requerida.">
-    <div>
-      <p>Faça o cadastro das suas habilidades técnicas, ou seja, as habilidades adquiridas por meio de formação tradicional.</p>
-    </div>
+  <mat-step [stepControl]="secondFormGroup" errorMessage="Informação Requerida.">
     <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Informações de currículo</ng-template>
+      <ng-template matStepLabel>Informações do currículo</ng-template>
       <div class="row">
         <app-chips-behavorial-skill></app-chips-behavorial-skill>
       </div>
@@ -39,7 +34,7 @@
       <button button matStepperNext>Avançar</button>
     </div>
   </mat-step>
-  <mat-step [stepControl]="thirdFormGroup" errorMessage="Habilidade Requerida.">
+  <mat-step [stepControl]="thirdFormGroup" errorMessage="Informação Requerida.">
     <div>
       <p>Preencha mais algumas informações que serão utilizadas para ações afirmativas.</p>
     </div>
