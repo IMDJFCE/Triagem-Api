@@ -17,6 +17,9 @@
       <div class="row">
       <app-chips-technical-skill></app-chips-technical-skill>
       </div>
+      <div class="row">
+        <app-chips-behavorial-skill></app-chips-behavorial-skill>
+      </div>
       <div class="btn">
         <button button matStepperNext>Avançar</button>
       </div>
@@ -25,9 +28,6 @@
   <mat-step [stepControl]="secondFormGroup" errorMessage="Informação Requerida.">
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Informações do currículo</ng-template>
-      <div class="row">
-        <app-chips-behavorial-skill></app-chips-behavorial-skill>
-      </div>
     </form>
     <div class="btn">
       <button button matStepperPrevious>Voltar</button>
