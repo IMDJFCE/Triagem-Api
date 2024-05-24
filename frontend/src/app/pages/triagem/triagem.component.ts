@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 import { UsuarioResponse } from 'src/app/models/UsuarioResponse';
-import { ActivatedRoute } from '@angular/router'; // Adicionando esta importação
-import { TriagemService } from 'src/app/services/triagem/triagem.service'; // Adicionando esta importação
+import { ActivatedRoute } from '@angular/router'; 
+import { TriagemService } from 'src/app/services/triagem/triagem.service'; 
+import { RacaDescricao } from 'src/app/models/RacaDescricao';
+import { GeneroDescricao } from 'src/app/models/GeneroDescricao';
 
 @Component({
   selector: 'app-triagem',
@@ -13,16 +14,17 @@ import { TriagemService } from 'src/app/services/triagem/triagem.service'; // Ad
 
 export class TriagemComponent implements OnInit {
   usuariosTriados: UsuarioResponse[] = [];
+  mostrarUsuarios: UsuarioResponse[] = [];
   existeUsuarios: boolean = true;
   oportunidadeId: string | null = null;
+  filtroTodosSelecionado: boolean = false;
 
-  title = 'Nome';
   parentSelector: boolean = false;
   candidato: any[] = [];
   toppings = new FormControl('');
   toppingList: string[] = ['Todos', 'Mulheres', 'Pretos, pardos e indígenas', 'Deficientes', 'Mostrar nomes'];
 
-  constructor(private usuarioService: UsuarioService, private triagemService: TriagemService, private route: ActivatedRoute) {}
+  constructor(private triagemService: TriagemService, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -30,7 +32,8 @@ export class TriagemComponent implements OnInit {
       if (this.oportunidadeId !== null) {
         this.triagemService.triarUsuariosParaOportunidade(this.oportunidadeId).subscribe(data => {
           this.usuariosTriados = data;
-          this.getUsuariosTriados(this.usuariosTriados); 
+          this.VerificarExistenciaUsuarios(this.usuariosTriados); 
+          this.esconderNomes(this.usuariosTriados);
         })
       }
     });
@@ -57,9 +60,63 @@ export class TriagemComponent implements OnInit {
     console.log(id, isChecked);
   }
 
-  getUsuariosTriados(usuarios: UsuarioResponse[]) {
+  VerificarExistenciaUsuarios(usuarios: UsuarioResponse[]) {
     if (usuarios.length === 0) {
       this.existeUsuarios = false;
     }
   }
+
+  esconderNomes(usuarios: UsuarioResponse[]){
+    if(usuarios.length > 0){
+      this.mostrarUsuarios = usuarios.map((usuario, index) => {
+        return { ...usuario, nome: `Candidato ${index + 1}` };
+      });
+    }
+  }
+
+  aplicarFiltros(){
+    if (this.toppings.value) {
+      let usuariosFiltrados = this.usuariosTriados;
+      
+      // Verificar se o filtro "Todos" foi selecionado
+      if (this.toppings.value.includes('Todos')) {
+        this.filtroTodosSelecionado = true;
+      }else{
+        this.filtroTodosSelecionado = false;
+      }
+  
+      // Verificar se o filtro de gênero foi selecionado
+      if (this.toppings.value.includes('Mulheres')) {
+        usuariosFiltrados = usuariosFiltrados.filter(usuario => {
+          return usuario.genero?.descricao === GeneroDescricao.FEMININO;
+        });
+      }
+  
+      // Verificar se o filtro de raça foi selecionado
+      if (this.toppings.value.includes('Pretos, pardos e indígenas')) {
+        usuariosFiltrados = usuariosFiltrados.filter(usuario => {
+          return (
+            usuario.raca?.descricao === RacaDescricao.PARDO ||
+            usuario.raca?.descricao === RacaDescricao.PRETO ||
+            usuario.raca?.descricao === RacaDescricao.INDIGENA
+          );
+        });
+      }
+
+      // Verificar se o filtro de deficientes foi selecionado
+      if (this.toppings.value.includes('Deficientes')) {
+        usuariosFiltrados = usuariosFiltrados.filter(usuario => {
+          return usuario.deficiencias != undefined && usuario.deficiencias?.length > 0;
+        });
+      }
+  
+      // Verificar se o filtro de mostrar nomes foi selecionado
+      if (this.toppings.value.includes('Mostrar nomes')) {
+        this.mostrarUsuarios = usuariosFiltrados;
+      }else{
+        this.esconderNomes(usuariosFiltrados);
+      }
+    }
+  }
+
 }
