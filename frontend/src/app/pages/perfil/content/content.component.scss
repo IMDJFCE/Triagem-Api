@@ -94,3 +94,19 @@ body {
 .descricao-box {
   flex: 3;
 }
+
+/* Media query para dispositivos móveis */
+@media screen and (max-width: 600px) {
+  .container {
+    padding: 0.5rem; /* Reduz o padding em dispositivos móveis */
+  }
+  
+  .btn {
+    flex-direction: column; /* Coloca os botões em coluna em dispositivos móveis */
+  }
+
+  button {
+    width: 100%; /* Define a largura do botão como 100% em dispositivos móveis */
+    margin: 0.5rem 0; /* Adiciona margem superior e inferior aos botões em dispositivos móveis */
+  }
+}
