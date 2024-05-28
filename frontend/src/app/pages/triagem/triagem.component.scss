@@ -17,13 +17,28 @@ main{
     border-radius: .4rem;
     margin: 1rem auto;
 } 
-
-.form-check-input {
+tr {
     display: flex;
-    padding: .2rem;
-    margin: 1rem;
+    align-items: center;
 }
 
+.form-check-input {
+   padding:0;
+}
+
+.titulo-candidato {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-left: 10px;
+}
+
+.msg-naoexiste {
+    padding: 10px;
+    margin: 2rem;
+    font-size: 1.1rem;
+    color:red;
+    font-style: italic;
+}
 
 .button-container{
     width: 70%;
