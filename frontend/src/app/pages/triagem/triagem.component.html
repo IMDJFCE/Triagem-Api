@@ -35,7 +35,7 @@
                                 (change)="onChangeCandidato($event)"
                                 />  
                             </th>
-                            <th scope="col"> Nome </th>
+                            <th scope="col" class="titulo-candidato"> Nome </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,8 +54,8 @@
                             </tr>
                         </div>
 
-                        <div *ngIf="!existeUsuarios">
-                            <p>Não existe usuário triado com essas habilidades nesse momento.</p>
+                        <div *ngIf="!existeUsuarios" class="msg-naoexiste">
+                            <p>"Não existe usuário triado com essas habilidades nesse momento."</p>
                         </div>
                     </tbody>
                 </table>
