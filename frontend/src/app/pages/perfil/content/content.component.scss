@@ -1,29 +1,36 @@
-p{
+/* Centraliza o texto */
+p {
   text-align: center;
   padding: 0.5rem;
 }
-mat-step{
+
+/* Ajusta o passo do material design */
+mat-step {
   margin: 0.5rem;
   background-color: #fff;
 }
 
-mat-form-field{
-  width: 50vw;
+/* Ajusta o campo de formulário do material design */
+mat-form-field {
+  width: 100%;
   background-color: #fff;
 }
 
-.btn{
+/* Centraliza o botão */
+.btn {
   display: flex;
   justify-content: center;
   margin-bottom: 2rem;
   padding: 1rem;
 }
 
+/* Ajusta o campo de formulário do material design */
 .mat-mdc-form-field {
   margin-top: 16px;
 }
 
-button{
+/* Estiliza o botão */
+button {
   margin: 1.25rem;
   width: 7rem;
   height: 3rem;
@@ -34,12 +41,54 @@ button{
   transition: all 0.5s ease;
 }
 
-button:hover{
+button:hover {
   background-color: rgba(0,122,51,1);
   color: #fff;
 }
 
-.row mat-form-field + mat-form-field {
+/* Centraliza todos os elementos na tela */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Garante que o body ocupe toda a altura da viewport */
+}
+
+/* Ajusta a largura do contêiner principal */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Centraliza verticalmente */
+  width: 100%;
+  max-width: 800px;
+  padding: 1rem;
+  height: 100%; /* Garante que o contêiner ocupe toda a altura do body */
+}
+
+.row {
+  display: flex;
+  flex-direction: column; /* Coloca os elementos em coluna */
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.row mat-form-field {
+  width: 100%; /* Faz com que todos os campos de formulário tenham a mesma largura */
+  margin-bottom: 1rem; /* Adiciona espaçamento entre os campos */
+}
+
+.label-box {
+  flex: 1;
+}
+
+.descricao-box {
+  flex: 3;
 }
 
