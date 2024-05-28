@@ -8,19 +8,21 @@ p {
 mat-step {
   margin: 0.5rem;
   background-color: #fff;
+  padding: 0.5rem; /* Adiciona um pequeno preenchimento interno */
 }
 
 /* Ajusta o campo de formulário do material design */
 mat-form-field {
   width: 100%;
   background-color: #fff;
+  margin-bottom: 0.5rem; /* Reduz a margem inferior */
 }
 
 /* Centraliza o botão */
 .btn {
   display: flex;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   padding: 1rem;
 }
 
@@ -39,6 +41,7 @@ button {
   background-color: #002F6C;
   color: #fff;
   transition: all 0.5s ease;
+  font-size: 0.9rem; /* Reduz o tamanho da fonte */
 }
 
 button:hover {
@@ -76,12 +79,12 @@ body {
   flex-direction: column; /* Coloca os elementos em coluna */
   align-items: center;
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem; /* Reduz a margem inferior */
 }
 
 .row mat-form-field {
   width: 100%; /* Faz com que todos os campos de formulário tenham a mesma largura */
-  margin-bottom: 1rem; /* Adiciona espaçamento entre os campos */
+  margin-bottom: 0.5rem; /* Reduz a margem inferior */
 }
 
 .label-box {
@@ -91,4 +94,3 @@ body {
 .descricao-box {
   flex: 3;
 }
-
