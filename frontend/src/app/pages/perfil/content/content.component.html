@@ -17,9 +17,6 @@
       <div class="row">
       <app-chips-technical-skill></app-chips-technical-skill>
       </div>
-      <div class="row">
-        <app-chips-behavorial-skill></app-chips-behavorial-skill>
-      </div>
       <div class="btn">
         <button button matStepperNext>Avançar</button>
       </div>
@@ -75,16 +72,18 @@
                 <option [value]="generoDescricao.OUTROS">Outro</option>
             </select>
             </mat-form-field>
-            <mat-form-field>
-              <mat-label>Etnia</mat-label>
-              <select matNativeControl name="selectControlEtnia" formControlName="selectControlEtnia">
-                <option [value]="racaDescricao.PRETO">Negro</option>
-                <option [value]="racaDescricao.PARDO">Pardo</option>
-                <option [value]="racaDescricao.INDIGENA">Indígena</option>
-                <option [value]="racaDescricao.AMARELO">Amarelo</option>
-                <option [value]="racaDescricao.BRANCO">Branco</option>
-              </select>
-            </mat-form-field>
+            <div class="row">
+              <mat-form-field class="custom-field">
+                <mat-label>Etnia</mat-label>
+                <select matNativeControl name="selectControlEtnia" formControlName="selectControlEtnia">
+                  <option [value]="racaDescricao.PRETO">Negro</option>
+                  <option [value]="racaDescricao.PARDO">Pardo</option>
+                  <option [value]="racaDescricao.INDIGENA">Indígena</option>
+                  <option [value]="racaDescricao.AMARELO">Amarelo</option>
+                  <option [value]="racaDescricao.BRANCO">Branco</option>
+                </select>
+              </mat-form-field>
+            </div>            
           </div>
           <mat-form-field>
             <mat-label>Possui deficiência</mat-label>
@@ -117,3 +116,4 @@
   </mat-step>
 </mat-stepper>
 </div>
+
