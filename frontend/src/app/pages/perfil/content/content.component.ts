@@ -53,6 +53,9 @@ export class ContentComponent implements OnInit {
   });
 
   secondFormGroup = this._formBuilder.group({
+    lattesControl: this._formBuilder.control('', [Validators.required]), // Variável para o currículo Lattes
+    linkedinControl: this._formBuilder.control('', [Validators.required]), // Variável para o LinkedIn
+    externoControl: this._formBuilder.control('', [Validators.required]) // Variável para o currículo externo
   });
   
   thirdFormGroup = this._formBuilder.group({
