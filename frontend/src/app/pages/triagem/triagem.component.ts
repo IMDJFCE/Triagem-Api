@@ -79,17 +79,14 @@ export class TriagemComponent implements OnInit {
       let usuariosFiltrados = this.usuariosTriados;
       
       // Verificar se o filtro "Todos" foi selecionado
-      if (this.toppings.value.includes('Todos')) {
-        this.filtroTodosSelecionado = true;
-      }else{
-        this.filtroTodosSelecionado = false;
-      }
+      this.filtroTodosSelecionado = this.toppings.value.includes('Todos');
   
       // Verificar se o filtro de gênero foi selecionado
       if (this.toppings.value.includes('Mulheres')) {
         usuariosFiltrados = usuariosFiltrados.filter(usuario => {
           return usuario.genero?.descricao === GeneroDescricao.FEMININO;
         });
+        this.mostrarUsuarios = usuariosFiltrados;
       }
   
       // Verificar se o filtro de raça foi selecionado
@@ -101,6 +98,7 @@ export class TriagemComponent implements OnInit {
             usuario.raca?.descricao === RacaDescricao.INDIGENA
           );
         });
+        this.mostrarUsuarios = usuariosFiltrados;
       }
 
       // Verificar se o filtro de deficientes foi selecionado
@@ -108,6 +106,7 @@ export class TriagemComponent implements OnInit {
         usuariosFiltrados = usuariosFiltrados.filter(usuario => {
           return usuario.deficiencias != undefined && usuario.deficiencias?.length > 0;
         });
+        this.mostrarUsuarios = usuariosFiltrados;
       }
   
       // Verificar se o filtro de mostrar nomes foi selecionado
