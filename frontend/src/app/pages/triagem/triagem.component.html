@@ -36,6 +36,7 @@
                                 />  
                             </th> -->
                             <th scope="col" class="titulo-candidato"> Nome </th>
+                            <th scope="col"class="titulo-info"> Mais informações </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,6 +52,9 @@
                                     />
                                 </th>
                                 <td>{{usuario.nome}}</td>
+                                <td>
+                                    <button class="btn-info" (click)="verMaisInformacoes(usuario)">+</button>
+                                </td>
                             </tr>
                         </div>
 

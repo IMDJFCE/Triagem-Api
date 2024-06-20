@@ -117,5 +117,9 @@ export class TriagemComponent implements OnInit {
       }
     }
   }
-
+  verMaisInformacoes(usuario: UsuarioResponse) {
+    // Lógica para abrir um modal ou exibir mais informações do candidato
+    // Pode usar um modal do Angular Material ou qualquer outro método para exibir as informações
+    console.log('Mais informações do candidato:', usuario);
+  }
 }
