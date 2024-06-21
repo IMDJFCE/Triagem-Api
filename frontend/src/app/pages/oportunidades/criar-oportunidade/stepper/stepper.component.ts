@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { OportunidadeService } from 'src/app/services/oportunidade/oportunidade.service';
 import { OportunidadeRequest } from 'src/app/models/OportunidadeRequest';
@@ -40,16 +40,40 @@ export class StepperComponent {
 
   secondFormGroup = this._formBuilder.group({
   });
+
  thirdFormGroup = this._formBuilder.group({
-  });
+  habilidadesSelect: new FormControl([], Validators.required)
+ });
 
   isLinear = false;
+
+  habilidadesComportamentais: HabilidadeRequest[] = [
+    {nome: 'Adaptabilidade', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Atenção aos detalhes', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Atitude positiva', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Colaboração', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Comunicação eficaz', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Criatividade', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Empatia', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Gestão de conflitos', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Gestão do tempo', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Inteligência emocional', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Liderança', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Negociação', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Organização', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Pensamento crítico', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Proatividade', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Resiliência', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Resolução de problemas', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Tomada de decisão', tipo: HabilidadeTipo.COMPORTAMENTAL}
+  ];
 
   constructor(private _formBuilder: FormBuilder, private oportunidadeService: OportunidadeService, private router: Router){}
 
   finalizar(){
     const firstFormGroupValues = this.firstFormGroup.value;
     this.adicionarHabilidadesTecnicasSelecionadas();
+    this.adicionarHabilidadesComportamentaisSelecionadas();
 
     const oportunidadeRequest: OportunidadeRequest = {
       titulo: firstFormGroupValues.firstCtrl ?? '',
@@ -88,6 +112,15 @@ export class StepperComponent {
       this.habilidadesSelecionadas.push(skill);
     }
   }
+
+  adicionarHabilidadesComportamentaisSelecionadas(): void {
+    const habilidadesSelect = this.thirdFormGroup.value.habilidadesSelect;
+    if (habilidadesSelect) {
+        for (let habilidade of habilidadesSelect) {
+            this.habilidadesSelecionadas.push(habilidade);
+        }
+    }
+}
 
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
