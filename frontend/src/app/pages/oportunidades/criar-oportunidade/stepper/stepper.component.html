@@ -66,7 +66,23 @@
           <form [formGroup]="secondFormGroup">
             <ng-template matStepLabel>Habilidades Técnicas</ng-template>
             <div class="row">
-              <app-chips-technical-skill></app-chips-technical-skill>
+                <mat-form-field class="technical-chip-list">
+                    <mat-label>Habilidades Técnicas</mat-label>
+                    <mat-chip-grid #chipGrid aria-label="Insira as Habilidades">
+                      <ng-container *ngFor="let skill of skills; let i = index">
+                        <mat-chip-row (removed)="remove(skill)" [editable]="true" (edited)="edit(skill, $event)"
+                          [aria-description]="'press enter to edit ' + skill.nome">
+                          {{skill.nome}}
+                          <button matChipRemove [attr.aria-label]="'remove ' + skill.nome">
+                            <mat-icon>cancel</mat-icon>
+                          </button>
+                        </mat-chip-row>
+                      </ng-container>
+                      <input placeholder="Nova Habilidade..." [matChipInputFor]="chipGrid"
+                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                        (matChipInputTokenEnd)="add($event)" />
+                    </mat-chip-grid>
+                  </mat-form-field>
             </div>
           </form>
           <div class="btn-box">
