@@ -33,6 +33,15 @@ public class UsuarioRequestDTO {
     @Size(max = 50)
     private String matricula;
 
+    @Size(max = 200)
+    private String curriculoLattes;
+
+    @Size(max = 200)
+    private String linkedin;
+
+    @Size(max = 200)
+    private String curriculoExterno;
+
     private Genero genero;
 
     private Raca raca;

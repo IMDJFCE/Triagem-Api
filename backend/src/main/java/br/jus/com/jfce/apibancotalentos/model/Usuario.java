@@ -53,6 +53,15 @@ public class Usuario extends AbstractEntity implements UserDetails {
     @Size(max = 15)
     private String tipo;
 
+    @Size(max = 200)
+    private String curriculoLattes;
+
+    @Size(max = 200)
+    private String linkedin;
+
+    @Size(max = 200)
+    private String curriculoExterno;
+
     @ManyToMany
     @JoinTable(
             name = "usuario_habilidade",
