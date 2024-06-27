@@ -14,8 +14,6 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { StepperComponent } from './stepper/stepper.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { ChipsBehavorialSkillComponent } from "../../components/chips-behavorial-skill/chips-behavorial-skill.component";
-import { ChipsTechnicalSkillComponent } from "../../components/chips-technical-skill/chips-technical-skill.component";
 
 @NgModule({
     declarations: [
@@ -36,9 +34,7 @@ import { ChipsTechnicalSkillComponent } from "../../components/chips-technical-s
         MatDatepickerModule,
         MatNativeDateModule,
         MatChipsModule,
-        MatAutocompleteModule,
-        ChipsBehavorialSkillComponent,
-        ChipsTechnicalSkillComponent
+        MatAutocompleteModule
     ]
 })
 export class CriarOportunidadeModule { }
