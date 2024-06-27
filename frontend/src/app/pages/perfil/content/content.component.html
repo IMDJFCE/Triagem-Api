@@ -115,20 +115,24 @@
             </mat-form-field>
           </div>
         </div>
-        <mat-form-field>
+        <div class="radio">
           <mat-label>Possui deficiência</mat-label>
-          <select matNativeControl name="selectControlDeficiencia" formControlName="selectControlDeficiencia">
-            <option value="pensamento" selected>Sim</option>
-            <option value="produtividade">Não</option>
-          </select>
-        </mat-form-field>
-        <div class="row">
-          <div class="label-box">
-            <mat-label class="font">Descrição da deficiência</mat-label>
+          <div>
+            <mat-radio-group formControlName="radioControlDeficiencia" (change)="onChangePossuiDeficiencia($event)">
+              <mat-radio-button [value]="true">Sim</mat-radio-button>
+              <mat-radio-button [value]="false">Não</mat-radio-button>
+            </mat-radio-group>
           </div>
-          <mat-form-field class="descricao-box">
-            <textarea matInput formControlName="textControl" placeholder="Digite seu texto" rows="3" required></textarea>
-          </mat-form-field>
+        </div>
+        <div *ngIf="possuiDeficiencia">
+          <div class="row">
+            <div class="label-box">
+              <mat-label class="font">Descrição da deficiência</mat-label>
+            </div>
+            <mat-form-field class="descricao-box">
+              <textarea matInput formControlName="textControl" placeholder="Digite seu texto" rows="3" required></textarea>
+            </mat-form-field>
+          </div>
         </div>
       </form>
       <div class="btn">

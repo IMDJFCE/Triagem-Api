@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
@@ -14,6 +14,7 @@ import { Raca } from 'src/app/models/Raca';
 import { HabilidadeRequest } from 'src/app/models/HabilidadeRequest';
 import { HabilidadeTipo } from 'src/app/models/HabilidadeTipo';
 import { UsuarioResponse } from 'src/app/models/UsuarioResponse';
+import { MatRadioChange } from '@angular/material/radio';
 
 @Component({
   selector: 'app-content',
@@ -41,12 +42,13 @@ export class ContentComponent implements OnInit {
   thirdFormGroup = this._formBuilder.group({
   selectControlGenero: this._formBuilder.control(GeneroDescricao.MASCULINO, [Validators.required]),
   selectControlEtnia: this._formBuilder.control(RacaDescricao.PARDO, [Validators.required]),
-  selectControlDeficiencia: this._formBuilder.control('', [Validators.required]),
-  textControl: this._formBuilder.control('', [Validators.required])
+  radioControlDeficiencia: this._formBuilder.control(false, [Validators.required]),
+  textControl: this._formBuilder.control('', this.textControlValidator)
   });
 
   racaDescricao = RacaDescricao;
   generoDescricao = GeneroDescricao;
+  possuiDeficiencia: boolean = false;
 
   skills: HabilidadeRequest[] = [{nome: 'Lógica', tipo: HabilidadeTipo.TECNICA}, {nome: 'Testes Unitários', tipo: HabilidadeTipo.TECNICA}];
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
@@ -78,7 +80,7 @@ export class ContentComponent implements OnInit {
   usuario?: UsuarioResponse;
   usuarioId = localStorage.getItem('usuarioId');
 
-  constructor(private _formBuilder: FormBuilder, private usuarioService: UsuarioService) {}
+  constructor(private _formBuilder: FormBuilder, private usuarioService: UsuarioService){}
 
   ngOnInit(){
     if(this.usuarioId){
@@ -150,7 +152,29 @@ export class ContentComponent implements OnInit {
             this.habilidadesSelecionadas.push(habilidade);
         }
     }
-}
+  }
+
+  onChangePossuiDeficiencia(event: MatRadioChange) {
+    this.possuiDeficiencia = event.value;
+
+    const textControl = this.thirdFormGroup.get('textControl');
+    if (textControl) {
+      if (!event.value) {
+        textControl.clearValidators();
+      } else {
+        textControl.setValidators([Validators.required]);
+      }
+      textControl.updateValueAndValidity();
+    }
+  }
+
+  textControlValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const radioControlDeficiencia = control.parent?.get('radioControlDeficiencia');
+    if (radioControlDeficiencia && radioControlDeficiencia.value) {
+      return Validators.required(control);
+    }
+    return null;
+  }
 
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();

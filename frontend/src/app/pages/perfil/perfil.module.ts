@@ -13,6 +13,7 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
     declarations: [
@@ -32,7 +33,8 @@ import { MatIconModule } from '@angular/material/icon';
         MatOptionModule,
         MatSelectModule,
         MatChipsModule,
-        MatIconModule
+        MatIconModule,
+        MatRadioModule
     ],
     exports: [
         ContentComponent
