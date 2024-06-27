@@ -9,14 +9,44 @@
       </div>
     </mat-step>
     <mat-step [stepControl]="firstFormGroup" errorMessage="Informação Requerida.">
+      <div class="text">
+        <p>Faça o cadastro das suas habilidades técnicas e comportamentais.</p>
+      </div>
       <form [formGroup]="firstFormGroup">
-        <div class="text">
-          <p>Faça o cadastro das suas habilidades técnicas e comportamentais.</p>
-        </div>
-        <ng-template matStepLabel>Habilidades</ng-template>
-        <div class="row">
-          <app-chips-technical-skill></app-chips-technical-skill>
-        </div>
+        <ng-template matStepLabel>Habilidades Técnicas</ng-template>
+            <div class="row">
+                <mat-form-field>
+                    <mat-label>Habilidades Técnicas</mat-label>
+                    <mat-chip-grid #chipGrid aria-label="Insira as Habilidades">
+                      <ng-container *ngFor="let skill of skills; let i = index">
+                        <mat-chip-row (removed)="remove(skill)" [editable]="true" (edited)="edit(skill, $event)"
+                          [aria-description]="'press enter to edit ' + skill.nome">
+                          {{skill.nome}}
+                          <button matChipRemove [attr.aria-label]="'remove ' + skill.nome">
+                            <mat-icon>cancel</mat-icon>
+                          </button>
+                        </mat-chip-row>
+                      </ng-container>
+                      <input placeholder="Nova Habilidade..." [matChipInputFor]="chipGrid"
+                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                        (matChipInputTokenEnd)="add($event)" />
+                    </mat-chip-grid>
+                  </mat-form-field>
+            </div>
+            <div>
+              <p class="texto">Faça o cadastro das suas habilidades comportamentais, ou seja, competências pessoais.</p>
+            </div>
+            <ng-template matStepLabel>Habilidades Comportamentais</ng-template>
+            <div class="row">
+                <mat-form-field class="select-comportamentais">
+                    <mat-label>Selecionar Habilidades</mat-label>
+                    <mat-select placeholder="Selecione as habilidades comportamentais"
+                        formControlName="habilidadesSelect"
+                        multiple>
+                        <mat-option *ngFor="let habilidade of habilidadesComportamentais" [value]="habilidade">{{ habilidade.nome }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
         <div class="btn">
           <button button matStepperNext>Avançar</button>
         </div>

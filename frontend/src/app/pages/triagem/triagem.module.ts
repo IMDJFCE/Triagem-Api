@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
-import { ContentComponent } from '../perfil/content/content.component';
 import { TriagemComponent } from './triagem.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -19,7 +18,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ComponentsModule,
     RouterModule,
     MatListModule,
-    ContentComponent,
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,

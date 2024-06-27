@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
-import { ContentComponent } from '../perfil/content/content.component';
 import { PerfilCandidatoComponent} from './perfil-candidato.component';
 import { RouterModule } from '@angular/router';
 
@@ -14,7 +13,6 @@ import { RouterModule } from '@angular/router';
         CommonModule,
         RouterModule,
         ComponentsModule,
-        ContentComponent,
         RouterModule
     ]
 })

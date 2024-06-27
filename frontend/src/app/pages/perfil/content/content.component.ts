@@ -1,29 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {
-  FormBuilder,
-  Validators,
-  FormsModule,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { Component, OnInit, inject } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatStepperModule } from '@angular/material/stepper';
-import { MatOptionModule } from '@angular/material/core';
-import {MatSelectModule} from '@angular/material/select';
-import { ChipsBehavorialSkillComponent } from '../../components/chips-behavorial-skill/chips-behavorial-skill.component';
-import { ChipsTechnicalSkillComponent } from '../../components/chips-technical-skill/chips-technical-skill.component';
-import { SkillsService } from 'src/app/services/skills/skills.service';
+import { MatStepper } from '@angular/material/stepper';
+import { UsuarioService } from 'src/app/services/usuario/usuario.service';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { MatChipEditedEvent, MatChipInputEvent } from '@angular/material/chips';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { UsuarioRequest } from 'src/app/models/UsuarioRequest';
 import { GeneroDescricao } from 'src/app/models/GeneroDescricao';
 import { RacaDescricao } from 'src/app/models/RacaDescricao';
 import { DeficienciaRequest } from 'src/app/models/DeficienciaRequest';
-import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 import { Genero } from 'src/app/models/Genero';
 import { Raca } from 'src/app/models/Raca';
-import {Router} from '@angular/router';
+import { HabilidadeRequest } from 'src/app/models/HabilidadeRequest';
+import { HabilidadeTipo } from 'src/app/models/HabilidadeTipo';
+
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
@@ -33,23 +24,12 @@ import {Router} from '@angular/router';
       provide: STEPPER_GLOBAL_OPTIONS,
       useValue: { showError: true },
     },
-  ],
-  standalone: true,
-  imports: [
-    MatStepperModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatOptionModule,
-    MatSelectModule,
-    ChipsBehavorialSkillComponent,
-    ChipsTechnicalSkillComponent,
-  ],
+  ]
 })
+
 export class ContentComponent implements OnInit {
   firstFormGroup = this._formBuilder.group({
+    habilidadesSelect: new FormControl([], Validators.required)
   });
 
   secondFormGroup = this._formBuilder.group({
@@ -68,15 +48,39 @@ export class ContentComponent implements OnInit {
   racaDescricao = RacaDescricao;
   generoDescricao = GeneroDescricao;
 
-  constructor(private _formBuilder: FormBuilder, _commonModule: CommonModule, private skillsService: SkillsService, private usuarioService: UsuarioService) {}
+  skills: HabilidadeRequest[] = [{nome: 'Lógica', tipo: HabilidadeTipo.TECNICA}, {nome: 'Testes Unitários', tipo: HabilidadeTipo.TECNICA}];
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
+  addOnBlur = true;
+  announcer = inject(LiveAnnouncer);
+  habilidadesSelecionadas: HabilidadeRequest[] = [];
+
+  habilidadesComportamentais: HabilidadeRequest[] = [
+    {nome: 'Adaptabilidade', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Atenção aos detalhes', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Atitude positiva', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Colaboração', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Comunicação eficaz', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Criatividade', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Empatia', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Gestão de conflitos', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Gestão do tempo', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Inteligência emocional', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Liderança', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Negociação', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Organização', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Pensamento crítico', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Proatividade', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Resiliência', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Resolução de problemas', tipo: HabilidadeTipo.COMPORTAMENTAL},
+    {nome: 'Tomada de decisão', tipo: HabilidadeTipo.COMPORTAMENTAL}
+  ];
+
+  constructor(private _formBuilder: FormBuilder, private usuarioService: UsuarioService) {}
 
   ngOnInit() {}
 
-  ngOnDestroy() {
-    this.skillsService.clearSkills();
-  }
-
   finalizar(){
+    this.adicionarHabilidadesTecnicasSelecionadas();
     const firstFormGroupValues = this.thirdFormGroup.value;
     let deficiencias: DeficienciaRequest[] = [];
     if (Array.isArray(firstFormGroupValues.textControl)) {
@@ -101,13 +105,9 @@ export class ContentComponent implements OnInit {
       matricula: "2024001",
       genero: genero,
       raca: raca,
-      habilidades: [],
+      habilidades: this.habilidadesSelecionadas,
       deficiencias: deficiencias
     }
-
-    this.skillsService.skills$.subscribe(skills => {
-      usuarioRequest.habilidades = skills;
-    });
 
     this.usuarioService.createUsuario(usuarioRequest).subscribe({
       next: (response) => {
@@ -120,5 +120,62 @@ export class ContentComponent implements OnInit {
         console.log(error);
       }
     });
+  }
+
+  adicionarHabilidadesTecnicasSelecionadas(): void {
+    for (let skill of this.skills) {
+      this.habilidadesSelecionadas.push(skill);
+    }
+  }
+
+  adicionarHabilidadesComportamentaisSelecionadas(): void {
+    const habilidadesSelect = this.firstFormGroup.value.habilidadesSelect;
+    if (habilidadesSelect) {
+        for (let habilidade of habilidadesSelect) {
+            this.habilidadesSelecionadas.push(habilidade);
+        }
+    }
+}
+
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    // Add our skill
+    if (value) {
+      const newSkill: HabilidadeRequest = {
+        nome: value,
+        tipo: HabilidadeTipo.TECNICA
+      };
+      this.skills.push(newSkill);
+    }
+
+    // Clear the input value
+    event.chipInput!.clear();
+  }
+
+  remove(skill: HabilidadeRequest): void {
+    const index = this.skills.indexOf(skill);
+
+    if (index >= 0) {
+      this.skills.splice(index, 1);
+
+      this.announcer.announce(`Removed ${skill}`);
+    }
+  }
+
+  edit(skill: HabilidadeRequest, event: MatChipEditedEvent) {
+    const value = event.value.trim();
+
+    // Remove skill if it no longer has a name
+    if (!value) {
+      this.remove(skill);
+      return;
+    }
+
+    // Edit existing skill
+    const index = this.skills.indexOf(skill);
+    if (index >= 0) {
+      this.skills[index].nome = value;
+    }
   }
 }
