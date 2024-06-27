@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
@@ -13,6 +13,7 @@ import { Genero } from 'src/app/models/Genero';
 import { Raca } from 'src/app/models/Raca';
 import { HabilidadeRequest } from 'src/app/models/HabilidadeRequest';
 import { HabilidadeTipo } from 'src/app/models/HabilidadeTipo';
+import { UsuarioResponse } from 'src/app/models/UsuarioResponse';
 
 @Component({
   selector: 'app-content',
@@ -74,51 +75,66 @@ export class ContentComponent implements OnInit {
     {nome: 'Tomada de decisão', tipo: HabilidadeTipo.COMPORTAMENTAL}
   ];
 
+  usuario?: UsuarioResponse;
+  usuarioId = localStorage.getItem('usuarioId');
+
   constructor(private _formBuilder: FormBuilder, private usuarioService: UsuarioService) {}
 
-  ngOnInit() {}
+  ngOnInit(){
+    if(this.usuarioId){
+      this.usuarioService.getUsuarioById(this.usuarioId).subscribe(data =>{
+        this.usuario = data;
+      })
+    }
+
+  }
 
   finalizar(){
-    this.adicionarHabilidadesTecnicasSelecionadas();
-    const firstFormGroupValues = this.thirdFormGroup.value;
-    let deficiencias: DeficienciaRequest[] = [];
-    if (Array.isArray(firstFormGroupValues.textControl)) {
-      deficiencias = firstFormGroupValues.textControl.map(descricao => ({ descricao }));
-    }
-    
-    let genero: Genero | undefined;
-    if (firstFormGroupValues.selectControlGenero != null && firstFormGroupValues.selectControlGenero !== undefined) {
-      genero = { descricao: firstFormGroupValues.selectControlGenero };
-    }
-
-    let raca: Raca | undefined;
-    if(firstFormGroupValues.selectControlEtnia != null && firstFormGroupValues.selectControlEtnia !== undefined){
-      raca = { descricao: firstFormGroupValues.selectControlEtnia };
-    }
-
-    const usuarioRequest: UsuarioRequest = {
-      nome: "Cleiton",
-      email: "cleiton@gmail.com",
-      senha: "senhaQualquer",
-      dataNascimento: new Date("1999-05-20"),
-      matricula: "2024001",
-      genero: genero,
-      raca: raca,
-      habilidades: this.habilidadesSelecionadas,
-      deficiencias: deficiencias
-    }
-
-    this.usuarioService.createUsuario(usuarioRequest).subscribe({
-      next: (response) => {
-        alert('Usuário criado com sucesso"');
-        console.log(response);
-        // this.router.navigate(['perfil-candidato/:id']);
-      },
-      error: (error) => {
-        alert('Erro ao criar Usuário:\n' + JSON.stringify(error, null, 2));
-        console.log(error);
+    if(this.usuario){
+      this.adicionarHabilidadesTecnicasSelecionadas();
+      this.adicionarHabilidadesComportamentaisSelecionadas();
+      const firstFormGroupValues = this.thirdFormGroup.value;
+      let deficiencias: DeficienciaRequest[] = [];
+      if (Array.isArray(firstFormGroupValues.textControl)) {
+        deficiencias = firstFormGroupValues.textControl.map(descricao => ({ descricao }));
       }
-    });
+      
+      let genero: Genero | undefined;
+      if (firstFormGroupValues.selectControlGenero != null && firstFormGroupValues.selectControlGenero !== undefined) {
+        genero = { descricao: firstFormGroupValues.selectControlGenero };
+      }
+
+      let raca: Raca | undefined;
+      if(firstFormGroupValues.selectControlEtnia != null && firstFormGroupValues.selectControlEtnia !== undefined){
+        raca = { descricao: firstFormGroupValues.selectControlEtnia };
+      }
+
+      const usuarioRequest: UsuarioRequest = {
+        nome: this.usuario.nome,
+        email: this.usuario.email,
+        senha: "senhaQualquer",
+        dataNascimento: this.usuario.dataNascimento,
+        matricula: this.usuario.matricula,
+        genero: genero,
+        raca: raca,
+        habilidades: this.habilidadesSelecionadas,
+        deficiencias: []
+      }
+
+      if(this.usuarioId){
+        this.usuarioService.updateUsuario(this.usuarioId, usuarioRequest).subscribe({
+          next: (response) => {
+            alert('Perfil atualizado com sucesso');
+            console.log(response);
+            // this.router.navigate(['perfil-candidato/:id']);
+          },
+          error: (error) => {
+            alert('Erro ao criar Usuário:\n' + JSON.stringify(error, null, 2));
+            console.log(error);
+          }
+        });
+      }
+    }
   }
 
   adicionarHabilidadesTecnicasSelecionadas(): void {

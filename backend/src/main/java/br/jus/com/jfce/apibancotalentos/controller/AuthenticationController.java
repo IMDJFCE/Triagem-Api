@@ -42,8 +42,6 @@ public class AuthenticationController {
 
     @PostMapping("/cadastro")
     public UsuarioResponseDTO cadastro(@RequestBody @Valid UsuarioRequestDTO request){
-        String encryptedPassword = new BCryptPasswordEncoder().encode(request.getSenha());
-        request.setSenha(encryptedPassword);
         return usuarioService.create(request);
     }
 }

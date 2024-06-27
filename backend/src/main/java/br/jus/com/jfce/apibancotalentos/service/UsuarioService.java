@@ -87,6 +87,8 @@ public class UsuarioService{
         created.setTipo("Candidato");
         created.setHabilidades(this.manipularHabilidades(usuarioRequest.getHabilidades()));
         created.setDeficiencias(this.manipularDeficiencias(usuarioRequest.getDeficiencias()));
+        String encryptedPassword = new BCryptPasswordEncoder().encode(created.getSenha());
+        created.setSenha(encryptedPassword);
         created = usuarioRepository.save(created);
         return usuarioMapper.toUsuarioResponseDTO(created);
     }
