@@ -1,18 +1,17 @@
-import { MatListModule } from '@angular/material/list';
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { ComponentsModule } from 'src/app/shared/components/components.module';
-import { TriagemComponent } from './triagem.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { RouterModule } from "@angular/router";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatListModule } from "@angular/material/list";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatSelectModule } from "@angular/material/select";
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { ComponentsModule } from "src/app/shared/components/components.module";
+import { TriagemComponent } from "./triagem.component";
+import { ModalComponent, ModalContent } from "./modal/modal.component"; // Importar ModalComponent e ModalContent
 
 @NgModule({
-    declarations: [
-      TriagemComponent
-    ],
+  declarations: [TriagemComponent],
   imports: [
     CommonModule,
     ComponentsModule,
@@ -22,9 +21,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    ModalComponent,
+    ModalContent,
   ],
 })
-
-
-export class TriagemModule { }
+export class TriagemModule {}
