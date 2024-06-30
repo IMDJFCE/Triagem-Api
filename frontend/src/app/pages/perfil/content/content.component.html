@@ -22,9 +22,9 @@
                         <mat-chip-row (removed)="remove(skill)" [editable]="true" (edited)="edit(skill, $event)"
                           [aria-description]="'press enter to edit ' + skill.nome">
                           {{skill.nome}}
-                          <button matChipRemove [attr.aria-label]="'remove ' + skill.nome">
+                          <button2 matChipRemove [attr.aria-label]="'remove ' + skill.nome">
                             <mat-icon>cancel</mat-icon>
-                          </button>
+                          </button2>
                         </mat-chip-row>
                       </ng-container>
                       <input placeholder="Nova Habilidade..." [matChipInputFor]="chipGrid"
