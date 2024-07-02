@@ -48,25 +48,36 @@ tr {
 td {
     font-weight: bold;
     font-size: 1.1rem;
-    margin-left: 10px;
 }
-.btn-info {
-    background-color: #002F6C;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
+.info-column {
     display: flex;
-    align-items: center;
     justify-content: center;
-    cursor: pointer;
-    font-size: 1.5rem;
-    line-height: 1;
-    padding: 0;
-    margin: 0 auto; /* Centraliza o botão na célula */
-    margin-left: 80px;
+    align-items: center;
+    flex-direction: column; 
   }
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    }
+  
+// .btn-info {
+//     background-color: #002F6C;
+//     color: white;
+//     border: none;
+//     border-radius: 50%;
+//     width: 30px;
+//     height: 30px;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     cursor: pointer;
+//     font-size: 1.5rem;
+//     line-height: 1;
+//     padding: 0;
+//     margin: 0 auto; /* Centraliza o botão na célula */
+//     margin-left: 80px;
+//   }
   .table {
     width: 100%;
     text-align: center;

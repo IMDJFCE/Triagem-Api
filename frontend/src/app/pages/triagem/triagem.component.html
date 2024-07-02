@@ -42,15 +42,6 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <!-- <th scope="col">
-                            <input
-                                class="form-check-input"
-                                type="checkbox"
-                                [(ngModel)]="parentSelector"
-                                [value]="-1"
-                                (change)="onChangeCandidato($event)"
-                                />
-                            </th> -->
                         <th scope="col" class="titulo-candidato">Nome</th>
                         <th scope="col" class="titulo-info">
                             Mais informações
@@ -69,13 +60,14 @@
                                     (change)="onChangeCandidato($event)"
                                 />
                             </th>
-                            <td>{{usuario.nome}}</td>
-                            <td>
-                                <app-modal />
-                            </td>
-                        </tr>
-                    </div>
-
+                                <td>
+                                    <span>{{usuario.nome}}</span>
+                                </td>
+                                <td class="info-column">
+                                    <app-modal></app-modal>
+                                </td>
+                            </tr>
+                        </div>
                     <div *ngIf="!existeUsuarios" class="msg-naoexiste">
                         <p>
                             "Não existe usuário triado com essas habilidades
