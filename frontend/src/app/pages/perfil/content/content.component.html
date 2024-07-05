@@ -126,13 +126,17 @@
         </div>
         <div *ngIf="possuiDeficiencia">
           <div class="row">
-            <div class="label-box">
-              <mat-label class="font">Descrição da deficiência</mat-label>
-            </div>
-            <mat-form-field class="descricao-box">
-              <textarea matInput formControlName="textControl" placeholder="Digite seu texto" rows="3" required></textarea>
+            <mat-form-field class="custom-field">
+              <mat-label>Descrição da deficiência</mat-label>
+              <select matNativeControl name="selectControlDeficiencia" formControlName="selectControlDeficiencia">
+                <option [value]="racaDescricao.PRETO">Deficiência Intelectual e Cognitiva</option>
+                <option [value]="racaDescricao.PARDO">Deficiência Motora</option>
+                <option [value]="racaDescricao.INDIGENA">Deficiência Sensorial</option>
+                <option [value]="racaDescricao.AMARELO">Deficiências Múltiplas</option>
+              </select>
             </mat-form-field>
           </div>
+
         </div>
       </form>
       <div class="btn">
