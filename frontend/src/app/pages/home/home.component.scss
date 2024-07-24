@@ -1,0 +1,56 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #ffffff;
+}
+
+.container {
+    padding-top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center; /* Alinha os botões horizontalmente no centro */
+    align-items: center; /* Alinha os botões verticalmente no centro */
+    gap: 80px; /* Ajuste o espaço entre os botões se necessário */
+}
+
+
+.icon-button {
+    background-color: rgba(0, 122, 51, 1);
+    width: 500px;
+    height: 500px;
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.icon-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.icon-button {
+    margin: 5px 0; /* Ajusta a margem superior e inferior */
+}
+
+.icon-button mat-icon {
+    font-size: 20px; /* Ajusta o tamanho do ícone */
+    color: rgb(0, 0, 0); /* Ajusta a cor do ícone */
+    margin-bottom: 10px; /* Espaço abaixo do ícone */
+}
+
+.icon-button span {
+    display: block;
+    font-size: 20px;
+    color: #000;
+    font-weight: bold;
+}
