@@ -14,6 +14,11 @@ export class MenuComponent {
     return this.router.url.startsWith('/pages/criarOportunidade');
   }
 
+  badgevisible=false;
+  badgevisibility(){
+    this.badgevisible=true;
+  }
+
   logout(){
     this.authService.logout();
     this.router.navigate(['/login']);

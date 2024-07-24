@@ -13,10 +13,13 @@
           <a href="" routerLinkActive="active">
             <span>Configurações</span>
           </a>
+          <button (click)="badgevisibility()" mat-icon-button>
+            <mat-icon matBadgeColor="accent" matBadge="15" [matBadgeHidden]="badgevisible" matBadgeSize="small">notifications</mat-icon>
+          </button>
         <div>
         <button mat-icon-button (click)="logout()">
             <mat-icon>logout</mat-icon>
-          </button>
+        </button>
         </div>
     </div>
 </mat-toolbar>
