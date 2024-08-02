@@ -5,11 +5,10 @@
 <main>
     <div class="lista-candidatos">
         <h3>
-            Lista de candidatos(as) aprovado(s) na triagem cega. Antes de enviar
-            os convites, lembre-se que pode utilizar filtros que considerem as
-            questões de diversidade e inclusão, dando especial atenção às
-            minorias (gênero, étnico raciais e deficientes) ao selecionar os
-            candidatos para os convites.
+            Utilize os filtros para triar os candidatos de acordo com sua preferência. 
+            Depois, consulte o ranking e escolha os candidatos desejados para a próxima etapa. <br>
+            Por fim, cadastre as informações cruciais para próxima etapa, como instruções ou link para reunião.
+
         </h3>
     </div>
     <div class="filter-selection">
@@ -28,8 +27,9 @@
             </mat-select>
         </mat-form-field>
     </div>
-    <div class="lista-candidatos-container">
-        <div class="paginator">
+    <div class="main-wrapper">
+        <div class="lista-candidatos-container">
+        <!-- <div class="paginator">
             <mat-paginator
                 [length]="100"
                 [pageSize]="10"
@@ -37,15 +37,12 @@
                 aria-label="Select page"
             >
             </mat-paginator>
-        </div>
+        </div> -->
         <div class="container mt-5">
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col" class="titulo-candidato">Nome</th>
-                        <th scope="col" class="titulo-info">
-                            Mais informações
-                        </th>
+                        <th scope="col" class="titulo-candidato">Ranking</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -78,12 +75,18 @@
             </table>
         </div>
     </div>
+    <div class="informacoes-container">
+        <h2>Informações para a Próxima Etapa</h2>
+        <p>Detalhes e instruções sobre a próxima etapa.</p>
+        <!-- Mais informações -->
+        </div>
+    </div>
     <div class="button-container">
         <div class="button-box">
-            <a class="voltar" routerLink="/pages/perfil">Voltar</a>
+            <a class="voltar" routerLink="/pages/perfil">Voltar para oportunidade</a>
         </div>
         <div class="button-box">
-            <a class="next-step" routerLink="">Próxima etapa </a>
+            <a class="next-step" routerLink="">Enviar convites </a>
         </div>
     </div>
 </main>

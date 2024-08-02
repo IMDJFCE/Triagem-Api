@@ -9,21 +9,36 @@ main{
     font-weight: bold;
 }
 
-.lista-candidatos-container{
+.filter-selection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start; /* Alinha os containers no topo */
+    gap: 1rem; /* Espaço entre os containers */
+    padding: 1rem; /* Espaçamento interno da wrapper */
+    box-sizing: border-box;
+}
+.lista-candidatos-container,
+.informacoes-container {
     border: 1px solid #2a4670;
-    width: 60%;
+    width: 48%; /* Ajusta a largura para caber lado a lado, considerando o gap */
     min-height: 400px;
     padding: .8rem;
     border-radius: .4rem;
-    margin: 1rem auto;
-} 
+    box-sizing: border-box;
+}
 tr {
     display: flex;
     align-items: center;
 }
 
 .form-check-input {
-   padding:0;
+   padding: 0px;
+   margin-right: 10px;
 }
 
 .titulo-candidato, .titulo-info {
@@ -32,10 +47,6 @@ tr {
     margin-left: 15px;
     padding: 10px;
 }
-.titulo-info {
-    text-align: center;
-    margin-left: 80px;
-  }
 
 .msg-naoexiste {
     padding: 10px;
@@ -61,23 +72,6 @@ td {
     margin-top: 10px;
     }
   
-// .btn-info {
-//     background-color: #002F6C;
-//     color: white;
-//     border: none;
-//     border-radius: 50%;
-//     width: 30px;
-//     height: 30px;
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     cursor: pointer;
-//     font-size: 1.5rem;
-//     line-height: 1;
-//     padding: 0;
-//     margin: 0 auto; /* Centraliza o botão na célula */
-//     margin-left: 80px;
-//   }
   .table {
     width: 100%;
     text-align: center;
