@@ -6,8 +6,7 @@
     <div class="lista-candidatos">
         <h3>
             Utilize os filtros para triar os candidatos de acordo com sua preferência. 
-            Depois, consulte o ranking e escolha os candidatos desejados para a próxima etapa. <br>
-            Por fim, cadastre as informações cruciais para próxima etapa, como instruções ou link para reunião.
+            Depois, consulte o ranking e escolha os candidatos desejados para a próxima etapa. Por fim, cadastre as informações cruciais para próxima etapa, como instruções ou link para reunião.
 
         </h3>
     </div>
@@ -76,14 +75,17 @@
         </div>
     </div>
     <div class="informacoes-container">
-        <h2>Informações para a Próxima Etapa</h2>
-        <p>Detalhes e instruções sobre a próxima etapa.</p>
-        <!-- Mais informações -->
+        <tr>
+            <th scope="col" class="titulo-candidato">Informações para a Próxima Etapa</th>
+        </tr>
+        <div class="input-box">
+            <input type="text" id="infoInput" placeholder="Digite aqui.">
+        </div>
         </div>
     </div>
     <div class="button-container">
         <div class="button-box">
-            <a class="voltar" routerLink="/pages/perfil">Voltar para oportunidade</a>
+            <a class="voltar" routerLink="/pages/perfil">Voltar</a>
         </div>
         <div class="button-box">
             <a class="next-step" routerLink="">Enviar convites </a>

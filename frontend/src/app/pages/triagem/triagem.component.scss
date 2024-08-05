@@ -1,5 +1,5 @@
 main{
-    width: 80%;
+    width: 45%;
     margin: 3rem auto;
 }
 
@@ -58,7 +58,7 @@ tr {
 
 td {
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 .info-column {
     display: flex;
@@ -66,6 +66,7 @@ td {
     align-items: center;
     flex-direction: column; 
   }
+
 .button-container {
     display: flex;
     justify-content: center;
@@ -76,7 +77,6 @@ td {
     width: 100%;
     text-align: center;
   }
-  
 
 .button-container{
     width: 70%;
@@ -120,4 +120,24 @@ td {
     cursor: pointer;
     text-decoration: none;
     font-size: .8rem;
+}
+/* Estilo para o input */
+input {
+    padding: 15px; /* Aumente o padding para ajustar a altura */
+    margin-bottom: 10px;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%; /* Ajusta para preencher o container */
+    height: 30px; /* Define a altura desejada */
+    box-sizing: border-box; /* Inclui o padding na largura total */
+}
+
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
 }
