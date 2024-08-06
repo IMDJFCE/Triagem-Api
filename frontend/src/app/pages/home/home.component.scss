@@ -19,7 +19,7 @@ body {
 
 
 .icon-button {
-    background-color: rgba(0, 122, 51, 1);
+    background: linear-gradient(45deg, rgba(0, 122, 51, 1) 0%, rgba(0, 47, 108, 1) 100%);
     width: 400px;
     height: 400px;
     border: none;
@@ -43,14 +43,14 @@ body {
 }
 
 .icon-button mat-icon {
-    font-size: 20px; /* Ajusta o tamanho do ícone */
-    color: rgb(0, 0, 0); /* Ajusta a cor do ícone */
+    font-size: 30px; /* Ajusta o tamanho do ícone */
+    color: #fff; /* Ajusta a cor do ícone */
     margin-bottom: 10px; /* Espaço abaixo do ícone */
 }
 
 .icon-button span {
     display: block;
-    font-size: 20px;
-    color: #000;
+    font-size: 26px;
+    color: #fff; /* Cor branca para o texto */
     font-weight: bold;
 }
