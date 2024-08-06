@@ -29,75 +29,84 @@
         <div id="filter-tooltip" style="display:none; position:absolute;">Aqui você pode selecionar múltiplas opções para filtrar os resultados.</div>
     </div>
     <div class="main-wrapper">
-        <div class="lista-candidatos-container">
-        <!-- <div class="paginator">
-            <mat-paginator
-                [length]="100"
-                [pageSize]="10"
-                [pageSizeOptions]="[5, 10, 25, 100]"
-                aria-label="Select page"
-            >
-            </mat-paginator>
-        </div> -->
-        <div class="container mt-5">
+        <div class="lista-candidatos-container container mt-5">
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col" class="titulo-candidato">Ranking
-                            <i id="info-icon">i</i>
-                            <div id="tooltip" style="display:none; position:absolute;">Aqui você encontrará a classificação dos candidatos.</div>
+                        <th scope="col" class="titulo-candidato-container">
+                            <div class="titulo-ranking">
+                                Ranking
+                                <i id="info-icon">i</i>
+                                <div id="tooltip" style="display:none; position:absolute;">Aqui você encontrará a classificação dos candidatos.</div>
+                            </div>
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <div *ngIf="existeUsuarios">
+                    <ng-container *ngIf="existeUsuarios">
                         <tr *ngFor="let usuario of mostrarUsuarios">
-                            <th scope="row">
-                                <input
-                                    class="form-check-input"
-                                    type="checkbox"
-                                    [value]="usuario.id"
-                                    [checked]="filtroTodosSelecionado"
-                                    (change)="onChangeCandidato($event)"
-                                />
-                            </th>
-                                <td>
-                                    <span>{{usuario.nome}}</span>
-                                </td>
-                                <td class="info-column">
-                                    <app-modal></app-modal>
-                                </td>
-                            </tr>
-                        </div>
-                    <div *ngIf="!existeUsuarios" class="msg-naoexiste">
-                        <p>
-                            "Não existe usuário triado com essas habilidades
-                            nesse momento."
-                        </p>
-                    </div>
+                            <td>
+                                <div class="check-input-container">
+                                    <input
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        [value]="usuario.id"
+                                        [checked]="filtroTodosSelecionado"
+                                        (change)="onChangeCandidato($event)"
+                                    />
+                                </div>
+                            </td>
+                            <td>
+                                <span>{{usuario.nome}}</span>
+                            </td>
+                            <td class="info-column">
+                                <app-modal></app-modal>
+                            </td>
+                        </tr>
+                    </ng-container>
+                    <tr *ngIf="!existeUsuarios" class="msg-naoexiste">
+                        <td colspan="3">
+                            "Não existe usuário triado com essas habilidades nesse momento."
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="informacoes-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col" class="titulo-candidato-container">
+                            <div class="titulo-prox-pagina">
+                                Informações para a Próxima Etapa
+                                <span id="info-prox">i</span>
+                                <div id="prox-tooltip" style="display:none; position:absolute;">Aqui você pode digitar informações para a próxima etapa da triagem.</div>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="input-box">
+                                <input type="text" id="infoInput" placeholder="Digite aqui.">
+                            </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
     </div>
-    <div class="informacoes-container">
-        <tr>
-            <th scope="col" class="titulo-candidato">Informações para a Próxima Etapa
-                <span id="info-prox">i</span>
-                <div id="prox-tooltip" style="display:none; position:absolute;">Aqui você pode digitar informações para a próxima etapa da triagem.</div>    
-            </th>
-        </tr>
-        <div class="input-box">
-            <input type="text" id="infoInput" placeholder="Digite aqui.">
-        </div>
-        </div>
+    
+
+<div class="button-container">
+    <div class="button-box">
+        <a class="voltar" routerLink="/pages/perfil">Voltar</a>
     </div>
-    <div class="button-container">
-        <div class="button-box">
-            <a class="voltar" routerLink="/pages/perfil">Voltar</a>
-        </div>
-        <div class="button-box">
-            <a class="next-step" routerLink="">Enviar convites </a>
-        </div>
+    <div class="button-box">
+        <a class="next-step" routerLink="">Enviar convites </a>
     </div>
+</div>
 </main>
 <app-footer></app-footer>

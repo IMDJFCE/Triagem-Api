@@ -3,6 +3,39 @@ main{
     margin: 3rem auto;
 }
 
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    padding: .8rem;
+    box-sizing: border-box;
+}
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+.titulo-candidato-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.5rem; 
+}
+.titulo-ranking {
+    display: flex;
+    align-items: center; 
+    font-size: 1.5rem; 
+}
+.titulo-prox-pagina{
+    display: flex;
+    align-items: center; 
+    font-size: 1.5rem; 
+}
 .lista-candidatos {
     text-align: center;
     margin-bottom: 1rem;
@@ -16,8 +49,7 @@ main{
 }
 .main-wrapper {
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start; /* Alinha os containers no topo */
+    justify-content: space-between;
     gap: 1rem; /* Espaço entre os containers */
     padding: 1rem; /* Espaçamento interno da wrapper */
     box-sizing: border-box;
@@ -43,11 +75,10 @@ tr {
    align-items: center;
 }
 
-.titulo-candidato, .titulo-info {
+.titulo-prox-pagina{
     font-weight: bold;
     font-size: 1.5rem;
-    margin-left: 15px;
-    padding: 10px;
+    margin-right:10px;
 }
 #info-icon, #filter-info-icon, #info-prox {
     display: inline-block;
@@ -58,14 +89,21 @@ tr {
     width: 20px;
     height: 20px;
     text-align: center;
-    line-height: 25px;
+    line-height: 20px;
     cursor: pointer;
     font-weight: bold;
     font-size: 12px;
     font-style: normal;
-    position: relative;
 }
-  
+.check-input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-check-input {
+    padding: 5px;
+    margin-right: 5px;
+}  
 #tooltip, #filter-tooltip, #prox-tooltip {
     background-color: #6d6c6c;
     color: #fff;
@@ -77,11 +115,9 @@ tr {
 }
 
 .msg-naoexiste {
-    padding: 10px;
-    margin: 2rem;
-    font-size: 1.1rem;
-    color:red;
-    font-style: italic;
+    text-align: center;
+    color: #ff0000;
+    font-weight: bold;
 }
 
 td {
@@ -93,19 +129,21 @@ td {
     justify-content: center;
     align-items: center;
     flex-direction: column; 
-  }
+}
 
 .button-container {
     display: flex;
     justify-content: center;
     margin-top: 10px;
-    }
-  
-  .table {
-    width: 100%;
-    text-align: center;
-  }
-
+}
+.button-container {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+    
 .button-container{
     width: 70%;
     margin: 0 auto;
@@ -118,7 +156,7 @@ td {
     margin-bottom: 2rem;
 }
 
-.voltar{
+.voltar, .next-step {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -126,7 +164,6 @@ td {
     height: 40px;
     margin: 1rem;
     padding: 1.3rem 1rem;
-    background-color: #a2a4a5;
     color: white;
     border-radius: 1rem;
     cursor: pointer;
@@ -134,30 +171,22 @@ td {
     font-size: .8rem;
 }
 
-.next-step{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 150px;
-    height: 1px;
-    margin: 1rem;
-    padding: 1.3rem 1rem;
-    background-color:  #002F6C;
-    color: white;
-    border-radius: 1rem;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: .8rem;
+.voltar {
+    background-color: #a2a4a5;
+}
+
+.next-step {
+    background-color: #002F6C;
 }
 /* Estilo para o input */
-input {
-    padding: 15px; /* Aumente o padding para ajustar a altura */
+.input-box input {
+    padding: 15px;
     margin-bottom: 10px;
     border-radius: 4px;
     font-size: 16px;
-    width: 100%; /* Ajusta para preencher o container */
-    height: 30px; /* Define a altura desejada */
-    box-sizing: border-box; /* Inclui o padding na largura total */
+    width: 100%;
+    height: 30px;
+    box-sizing: border-box;
 }
 
 button {
