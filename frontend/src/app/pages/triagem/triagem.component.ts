@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, AfterViewInit, Renderer2} from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { UsuarioResponse } from "src/app/models/UsuarioResponse";
 import { ActivatedRoute } from "@angular/router";
@@ -35,6 +35,7 @@ export class TriagemComponent implements OnInit {
     private triagemService: TriagemService,
     private route: ActivatedRoute,
     private dialog: MatDialog,
+    private renderer: Renderer2
   ) {}
 
   ngOnInit() {
@@ -133,6 +134,32 @@ export class TriagemComponent implements OnInit {
       }
     }
   }
+// Adicionando os ícones "i"
+  ngAfterViewInit() {
+    const tooltips = [
+      { iconId: 'info-icon', tooltipId: 'tooltip' },
+      { iconId: 'filter-info-icon', tooltipId: 'filter-tooltip' },
+      { iconId: 'info-prox', tooltipId: 'prox-tooltip' }
+    ];
+
+    tooltips.forEach(({ iconId, tooltipId }) => {
+      const infoIcon = this.renderer.selectRootElement(`#${iconId}`, true);
+      const tooltip = this.renderer.selectRootElement(`#${tooltipId}`, true);
+
+      if (infoIcon && tooltip) {
+        this.renderer.listen(infoIcon, 'mouseover', () => {
+          this.renderer.setStyle(tooltip, 'display', 'block');
+          const rect = infoIcon.getBoundingClientRect();
+          this.renderer.setStyle(tooltip, 'left', `${rect.right}px`);
+          this.renderer.setStyle(tooltip, 'top', `${rect.top - (tooltip.offsetHeight / 2) + (infoIcon.offsetHeight / 2)}px`);
+        });
+
+        this.renderer.listen(infoIcon, 'mouseout', () => {
+          this.renderer.setStyle(tooltip, 'display', 'none');
+        });
+      }
+    });
+  }
 
   verMaisInformacoes(usuario: UsuarioResponse) {
     // Abrir modal para exibir mais informações do candidato
@@ -145,3 +172,4 @@ export class TriagemComponent implements OnInit {
     });
   }
 }
+

@@ -25,6 +25,8 @@
                 >
             </mat-select>
         </mat-form-field>
+        <span id="filter-info-icon">i</span>
+        <div id="filter-tooltip" style="display:none; position:absolute;">Aqui você pode selecionar múltiplas opções para filtrar os resultados.</div>
     </div>
     <div class="main-wrapper">
         <div class="lista-candidatos-container">
@@ -41,7 +43,10 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col" class="titulo-candidato">Ranking</th>
+                        <th scope="col" class="titulo-candidato">Ranking
+                            <i id="info-icon">i</i>
+                            <div id="tooltip" style="display:none; position:absolute;">Aqui você encontrará a classificação dos candidatos.</div>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -76,7 +81,10 @@
     </div>
     <div class="informacoes-container">
         <tr>
-            <th scope="col" class="titulo-candidato">Informações para a Próxima Etapa</th>
+            <th scope="col" class="titulo-candidato">Informações para a Próxima Etapa
+                <span id="info-prox">i</span>
+                <div id="prox-tooltip" style="display:none; position:absolute;">Aqui você pode digitar informações para a próxima etapa da triagem.</div>    
+            </th>
         </tr>
         <div class="input-box">
             <input type="text" id="infoInput" placeholder="Digite aqui.">
