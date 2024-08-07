@@ -2,6 +2,7 @@
 p {
   text-align: center;
   padding: 0.5rem;
+  font-size: 1.2rem; /* Aumenta o tamanho da fonte */
 }
 
 /* Ajusta o passo do material design */
@@ -9,6 +10,7 @@ mat-step {
   margin: 0.5rem;
   background-color: #fff;
   padding: 0.5rem; /* Adiciona um pequeno preenchimento interno */
+  font-size: 1.2rem; /* Aumenta o tamanho da fonte */
 }
 
 /* Ajusta o campo de formulário do material design */
@@ -16,6 +18,7 @@ mat-form-field {
   width: 100%;
   background-color: #fff;
   margin-bottom: 0.5rem; /* Reduz a margem inferior */
+  font-size: 1.2rem; /* Aumenta o tamanho da fonte */
 }
 
 /* Centraliza o botão */
@@ -24,24 +27,26 @@ mat-form-field {
   justify-content: center;
   margin-bottom: 1rem;
   padding: 1rem;
+  font-size: 1.2rem; /* Aumenta o tamanho da fonte */
 }
 
 /* Ajusta o campo de formulário do material design */
 .mat-mdc-form-field {
   margin-top: 16px;
+  font-size: 1.2rem; /* Aumenta o tamanho da fonte */
 }
 
 /* Estiliza o botão */
 button {
-  margin: 1.25rem;
+  margin: 7rem;
   width: 7rem;
   height: 3rem;
-  border-radius: 5px;
+  border-radius: 10px;
   border: none;
   background-color: #002F6C;
   color: #fff;
   transition: all 0.5s ease;
-  font-size: 0.9rem; /* Reduz o tamanho da fonte */
+  font-size: 1.3rem; /* Aumenta o tamanho da fonte */
 }
 
 button:hover {
@@ -53,6 +58,7 @@ button:hover {
 html, body {
   height: 100%;
   margin: 0;
+  font-size: 1.2rem; /* Aumenta o tamanho da fonte */
 }
 
 body {
@@ -72,6 +78,7 @@ body {
   max-width: 800px;
   padding: 1rem;
   height: 100%; /* Garante que o contêiner ocupe toda a altura do body */
+  font-size: 1.2rem; /* Aumenta o tamanho da fonte */
 }
 
 .row {
@@ -80,27 +87,38 @@ body {
   align-items: center;
   width: 100%;
   margin-bottom: 0.5rem; /* Reduz a margem inferior */
+  font-size: 1.2rem; /* Aumenta o tamanho da fonte */
 }
 
 .row mat-form-field {
   width: 100%; /* Faz com que todos os campos de formulário tenham a mesma largura */
   margin-bottom: 0.5rem; /* Reduz a margem inferior */
+  font-size: 1.2rem; /* Aumenta o tamanho da fonte */
 }
 
-.radio{
+.radio {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem; /* Aumenta o tamanho da fonte */
 }
 
 .label-box {
   flex: 1;
+  font-size: 1.2rem; /* Aumenta o tamanho da fonte */
 }
 
 .descricao-box {
   flex: 3;
+  font-size: 1.2rem; /* Aumenta o tamanho da fonte */
+}
+
+/* Estilo para os passos */
+.step-info {
+  font-size: 1.3rem; /* Aumenta o tamanho da fonte dos passos */
+  margin: 1rem 0; /* Adiciona margem para os passos */
 }
 
 /* Media query para dispositivos móveis */
@@ -116,5 +134,6 @@ body {
   button {
     width: 100%; /* Define a largura do botão como 100% em dispositivos móveis */
     margin: 0.5rem 0; /* Adiciona margem superior e inferior aos botões em dispositivos móveis */
+    font-size: 1.3rem; /* Aumenta o tamanho da fonte */
   }
 }

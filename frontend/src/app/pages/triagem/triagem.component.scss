@@ -1,4 +1,4 @@
-main{
+main {
     width: 45%;
     margin: 3rem auto;
 }
@@ -11,31 +11,37 @@ main{
     padding: .8rem;
     box-sizing: border-box;
 }
+
 .table {
     width: 100%;
     border-collapse: collapse;
 }
+
 th, td {
     padding: 10px;
     text-align: center;
 }
+
 .titulo-candidato-container {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     font-weight: bold;
-    font-size: 1.5rem; 
+    font-size: 2rem; 
 }
+
 .titulo-ranking {
     display: flex;
     align-items: center; 
     font-size: 1.5rem; 
 }
-.titulo-prox-pagina{
+
+.titulo-prox-pagina {
     display: flex;
     align-items: center; 
     font-size: 1.5rem; 
 }
+
 .lista-candidatos {
     text-align: center;
     margin-bottom: 1rem;
@@ -47,6 +53,7 @@ th, td {
     align-items: center;
     justify-content: center;
 }
+
 .main-wrapper {
     display: flex;
     justify-content: space-between;
@@ -54,6 +61,7 @@ th, td {
     padding: 1rem; /* Espaçamento interno da wrapper */
     box-sizing: border-box;
 }
+
 .lista-candidatos-container,
 .informacoes-container {
     border: 1px solid #2a4670;
@@ -63,6 +71,11 @@ th, td {
     border-radius: .4rem;
     box-sizing: border-box;
 }
+
+.informacoes-container {
+    padding-top: 7rem; /* Adicionado padding-top para empurrar o conteúdo para baixo */
+}
+
 tr {
     display: flex;
     align-items: center;
@@ -75,11 +88,12 @@ tr {
    align-items: center;
 }
 
-.titulo-prox-pagina{
+.titulo-prox-pagina {
     font-weight: bold;
     font-size: 1.5rem;
-    margin-right:10px;
+    margin-right: 10px;
 }
+
 #info-icon, #filter-info-icon, #info-prox {
     display: inline-block;
     margin-left: 10px;
@@ -95,15 +109,18 @@ tr {
     font-size: 12px;
     font-style: normal;
 }
+
 .check-input-container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .form-check-input {
     padding: 5px;
     margin-right: 5px;
 }  
+
 #tooltip, #filter-tooltip, #prox-tooltip {
     background-color: #6d6c6c;
     color: #fff;
@@ -124,6 +141,7 @@ td {
     font-weight: bold;
     font-size: 1rem;
 }
+
 .info-column {
     display: flex;
     justify-content: center;
@@ -132,19 +150,6 @@ td {
 }
 
 .button-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-}
-.button-container {
-    width: 70%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-    
-.button-container{
     width: 70%;
     margin: 0 auto;
     display: flex;
@@ -152,49 +157,42 @@ td {
     flex-wrap: wrap;
 }
 
-.button-box{
-    margin-bottom: 2rem;
+.button-box {
+    margin-bottom: 3rem;
 }
 
 .voltar, .next-step {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 150px;
-    height: 40px;
+    width: 130px; /* Reduzido o tamanho do botão */
+    height: 50px; /* Reduzido o tamanho do botão */
     margin: 1rem;
-    padding: 1.3rem 1rem;
+    padding: 1rem 1.5rem; /* Reduzido o padding do botão */
     color: white;
     border-radius: 1rem;
     cursor: pointer;
     text-decoration: none;
-    font-size: .8rem;
+    font-size: 0.875rem; /* Reduzido o tamanho da fonte para 14px */
 }
 
 .voltar {
-    background-color: #a2a4a5;
+    background-color: #002F6C;
 }
 
 .next-step {
     background-color: #002F6C;
 }
+
 /* Estilo para o input */
 .input-box input {
     padding: 15px;
     margin-bottom: 10px;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 18px; /* Reduzido o tamanho da fonte para 18px */
     width: 100%;
-    height: 30px;
+    height: 100px;
+    width: 400px;
     box-sizing: border-box;
-}
-
-button {
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
-    font-size: 16px;
-    cursor: pointer;
-    width: 100%;
+    justify-content: center;
 }
