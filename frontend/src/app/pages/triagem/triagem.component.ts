@@ -7,6 +7,7 @@ import { RacaDescricao } from "src/app/models/RacaDescricao";
 import { GeneroDescricao } from "src/app/models/GeneroDescricao";
 import { MatDialog } from "@angular/material/dialog";
 import { ModalContent } from "./modal/modal.component"; // Importar ModalContent standalone
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: "app-triagem",
@@ -34,8 +35,8 @@ export class TriagemComponent implements OnInit {
   constructor(
     private triagemService: TriagemService,
     private route: ActivatedRoute,
-    private dialog: MatDialog,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -171,5 +172,20 @@ export class TriagemComponent implements OnInit {
       console.log("Mais informações do candidato:", result);
     });
   }
+  openConfirmDialog(): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.sendInvitations();
+      }
+    });
+  }
+
+  sendInvitations(): void {
+    // Lógica para enviar convites
+    alert('Convites enviados com sucesso');
+  }
 }
+
 

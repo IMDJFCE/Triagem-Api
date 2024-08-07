@@ -9,10 +9,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule} from '@angular/material/button';
 import {MatBadgeModule} from '@angular/material/badge';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ConfirmDialogModule } from './pages/triagem/confirm-dialog/confirm-dialog.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +25,9 @@ import {MatBadgeModule} from '@angular/material/badge';
     HttpClientModule,
     MatIconModule,
     MatButtonModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatDialogModule,
+    ConfirmDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

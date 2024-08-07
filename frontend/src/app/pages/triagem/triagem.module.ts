@@ -8,7 +8,10 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { ComponentsModule } from "src/app/shared/components/components.module";
 import { TriagemComponent } from "./triagem.component";
-import { ModalComponent, ModalContent } from "./modal/modal.component"; // Importar ModalComponent e ModalContent
+import { ModalComponent, ModalContent } from "./modal/modal.component";
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { ConfirmDialogModule } from '../triagem/confirm-dialog/confirm-dialog.module'; 
 
 @NgModule({
   declarations: [TriagemComponent],
@@ -24,6 +27,9 @@ import { ModalComponent, ModalContent } from "./modal/modal.component"; // Impor
     MatPaginatorModule,
     ModalComponent,
     ModalContent,
-  ],
+    MatDialogModule,
+    MatButtonModule,
+    ConfirmDialogModule
+    ],
 })
 export class TriagemModule {}
