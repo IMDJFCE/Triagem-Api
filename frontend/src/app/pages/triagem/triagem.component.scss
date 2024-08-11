@@ -1,5 +1,5 @@
 main {
-    width: 45%;
+    width: 50%;
     margin: 3rem auto;
 }
 
@@ -48,16 +48,27 @@ th, td {
     font-weight: bold;
 }
 
+.filter-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
 .filter-selection {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 75%; /* Ajusta a largura do container de seleção */
+}
+
+.filter-selection mat-form-field {
+    width: 100%; /* Ajusta a largura do campo de seleção */
 }
 
 .main-wrapper {
     display: flex;
     justify-content: space-between;
-    gap: 1rem; /* Espaço entre os containers */
+    gap: 0.2rem; /* Espaço entre os containers */
     padding: 1rem; /* Espaçamento interno da wrapper */
     box-sizing: border-box;
 }
@@ -74,6 +85,7 @@ th, td {
 
 .informacoes-container {
     padding-top: 7rem; /* Adicionado padding-top para empurrar o conteúdo para baixo */
+    align-items: center;
 }
 
 tr {
