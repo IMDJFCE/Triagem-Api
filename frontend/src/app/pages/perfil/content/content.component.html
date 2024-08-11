@@ -52,7 +52,7 @@
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]="secondFormGroup" errorMessage="Informação Requerida.">
+    <mat-step [stepControl]="secondFormGroup" errorMessage="Informação Opcional.">
       <form [formGroup]="secondFormGroup">
         <ng-template matStepLabel>Informações do currículo</ng-template>
         <div class="row">
@@ -88,7 +88,7 @@
       </form>
     </mat-step>
     <mat-step [stepControl]="thirdFormGroup" errorMessage="Informação Requerida.">
-      <div>
+        <div class="text">
         <p>Preencha mais algumas informações que serão utilizadas para ações afirmativas.</p>
       </div>
       <form [formGroup]="thirdFormGroup">
