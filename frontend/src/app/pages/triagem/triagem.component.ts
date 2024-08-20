@@ -22,7 +22,7 @@ export class TriagemComponent implements OnInit {
   filtroTodosSelecionado: boolean = false;
 
   parentSelector: boolean = false;
-  candidato: any[] = [];
+  candidato: UsuarioResponse[] = [];
   toppings = new FormControl("");
   toppingList: string[] = [
     "Todos",
@@ -173,8 +173,13 @@ export class TriagemComponent implements OnInit {
     });
   }
   openConfirmDialog(): void {
-    const dialogRef = this.dialog.open(ConfirmDialogComponent);
-
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        oportunidadeId: this.oportunidadeId,
+        candidatos: this.candidato
+      }
+    });
+  
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.sendInvitations();

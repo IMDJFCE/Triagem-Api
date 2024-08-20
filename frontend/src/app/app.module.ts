@@ -11,6 +11,7 @@ import { MatButtonModule} from '@angular/material/button';
 import {MatBadgeModule} from '@angular/material/badge';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ConfirmDialogModule } from './pages/triagem/confirm-dialog/confirm-dialog.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ConfirmDialogModule } from './pages/triagem/confirm-dialog/confirm-dial
     MatButtonModule,
     MatBadgeModule,
     MatDialogModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

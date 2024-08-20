@@ -14,4 +14,5 @@ export interface UsuarioResponse{
     raca?: Raca;
     habilidades?: HabilidadeResponse[];
     deficiencias?: DeficienciaResponse[];
+    select?: boolean
 }
