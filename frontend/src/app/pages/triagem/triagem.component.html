@@ -7,26 +7,27 @@
         <h2>
             Utilize os filtros para triar os candidatos de acordo com sua preferência. 
             Depois, consulte o ranking e escolha os candidatos desejados para a próxima etapa. Por fim, cadastre as informações cruciais para próxima etapa, como instruções ou link para reunião.
-
         </h2>
     </div>
-    <div class="filter-selection">
-        <mat-form-field>
-            <mat-label>Selecione</mat-label>
-            <mat-select
-                [formControl]="toppings"
-                multiple
-                (selectionChange)="aplicarFiltros()"
-            >
-                <mat-option
-                    *ngFor="let topping of toppingList"
-                    [value]="topping"
-                    >{{topping}}</mat-option
+    <div class="filter-container">
+        <div class="filter-selection">
+            <mat-form-field>
+                <mat-label>Selecione</mat-label>
+                <mat-select
+                    [formControl]="toppings"
+                    multiple
+                    (selectionChange)="aplicarFiltros()"
                 >
-            </mat-select>
-        </mat-form-field>
-        <span id="filter-info-icon">i</span>
-        <div id="filter-tooltip" style="display:none; position:absolute;">Aqui você pode selecionar múltiplas opções para filtrar os resultados.</div>
+                    <mat-option
+                        *ngFor="let topping of toppingList"
+                        [value]="topping"
+                        >{{topping}}</mat-option
+                    >
+                </mat-select>
+            </mat-form-field>
+            <span id="filter-info-icon">i</span>
+            <div id="filter-tooltip" style="display:none; position:absolute;">Aqui você pode selecionar múltiplas opções para filtrar os resultados.</div>
+        </div>
     </div>
     <div class="main-wrapper">
         <div class="lista-candidatos-container container mt-5">
@@ -98,15 +99,3 @@
             </table>
         </div>
     </div>
-    
-
-<div class="button-container">
-    <div class="button-box">
-        <a class="voltar" routerLink="/pages/perfil">Voltar</a>
-    </div>
-    <div class="button-box">
-        <a class="next-step" (click)="openConfirmDialog()">Enviar</a>
-    </div>
-</div>
-</main>
-<app-footer></app-footer>
