@@ -36,7 +36,7 @@ export class ConfirmDialogComponent {
   sendInvitation(): void {
     const selectedCandidatos = this.data.candidatos.filter((candidato: UsuarioResponse) => candidato.select);
   
-    if (selectedCandidatos.length === 0) {
+    if (selectedCandidatos.length === 0 || selectedCandidatos == null || selectedCandidatos == undefined) {
       console.warn('Nenhum candidato selecionado para receber o convite.');
       return;
     }

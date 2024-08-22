@@ -173,10 +173,11 @@ export class TriagemComponent implements OnInit {
     });
   }
   openConfirmDialog(): void {
+    console.log("usuarios "+this.mostrarUsuarios)
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: {
         oportunidadeId: this.oportunidadeId,
-        candidatos: this.candidato
+        candidato: this.mostrarUsuarios
       }
     });
   
