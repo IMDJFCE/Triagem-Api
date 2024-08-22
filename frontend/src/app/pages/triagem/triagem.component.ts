@@ -56,8 +56,17 @@ export class TriagemComponent implements OnInit {
 
   onChangeCandidato(event: Event) {
     const checkbox = event.target as HTMLInputElement;
-    const id = checkbox.value;
+    const id = parseInt(checkbox.value, 10);
     const isChecked = checkbox.checked;
+   
+    this.usuariosTriados = this.usuariosTriados.map((usuario) => {
+      if (usuario.id === id) {
+        usuario.select = isChecked;
+      }
+      return usuario;
+    });
+  
+    console.log(this.usuariosTriados);
 
     this.candidato = this.candidato.map((d) => {
       const id = parseInt(checkbox.value, 10);
@@ -74,6 +83,7 @@ export class TriagemComponent implements OnInit {
     });
     console.log(id, isChecked);
   }
+  
 
   VerificarExistenciaUsuarios(usuarios: UsuarioResponse[]) {
     if (usuarios.length === 0) {
@@ -173,11 +183,11 @@ export class TriagemComponent implements OnInit {
     });
   }
   openConfirmDialog(): void {
-    console.log("usuarios "+this.mostrarUsuarios)
+    console.log("usuarios", this.mostrarUsuarios);
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: {
         oportunidadeId: this.oportunidadeId,
-        candidato: this.mostrarUsuarios
+        candidatos: this.mostrarUsuarios
       }
     });
   

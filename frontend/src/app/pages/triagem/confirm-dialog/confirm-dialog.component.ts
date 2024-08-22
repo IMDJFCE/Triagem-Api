@@ -34,13 +34,15 @@ export class ConfirmDialogComponent {
   }
 
   sendInvitation(): void {
+    if (!this.data.candidatos) {
+      console.error('Candidatos não definidos');
+      return;
+    }
     const selectedCandidatos = this.data.candidatos.filter((candidato: UsuarioResponse) => candidato.select);
-  
-    if (selectedCandidatos.length === 0 || selectedCandidatos == null || selectedCandidatos == undefined) {
+    if (selectedCandidatos.length === 0) {
       console.warn('Nenhum candidato selecionado para receber o convite.');
       return;
     }
-  
     const invitationData = {
       opportunityId: this.data.oportunidadeId,
       candidatos: selectedCandidatos.map(candidato => ({
